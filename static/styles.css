@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  background-color: rgb(27, 25, 36);
+  padding: 0;
+  font-family: "Inter";
+  font-stretch: expanded;
+  color: rgb(180, 180, 180);
+  user-select: none;
+}
+
+.textContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32vh;
+  width: 60vw;
+}
+
+.heading {
+  color: #eee;
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+#question {
+  margin-top: 40px;
+  max-width: 60vw;
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 4px 32px;
+  border-radius: 12px;
+  margin: 40px 40px;
+}
+
+.textStyle {
+  font-weight: 300;
+}
+
+#answer {
+  /* text-transform: uppercase; */
+  font-weight: 500;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.outputDiv {
+  width: 60vw;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.formLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#promptField {
+  padding: 16px;
+  background-color: rgb(31, 31, 31);
+  border: solid 0.5px;
+  border-color: rgb(61, 61, 61);
+  color: white;
+  border-radius: 12px;
+  width: 400px;
+  margin: 8%;
+}
+
+#promptField:focus {
+  outline: solid 1px;
+  outline-color: rgb(135, 188, 235);
+  /* border-radius: 8px; */
+  scale: 1.05;
+  transition: 280ms ease-in;
+}
+
+#promptField:hover {
+  outline: solid 1px;
+  outline-color: rgb(135, 188, 235);
+  scale: 1.05;
+  transition: 280ms ease-in;
+}
+
+#submitBtn {
+  padding: 20px 20px;
+  font-family: "Inter";
+  font-weight: 500;
+  color: rgb(135, 188, 235);
+  background-color: rgb(13, 0, 255);
+  border: none;
+  border-radius: 100px;
+  font-size: 12px;
+  width: 140px;
+  box-shadow: none;
+}
+
+#submitBtn:hover {
+  background-color: rgb(89, 200, 123);
+  color: rgb(30, 113, 30);
+  transition: 250ms ease-in;
+}
+
+canvas {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  opacity: 0.25;
+}
