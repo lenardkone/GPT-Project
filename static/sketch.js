@@ -1,8 +1,13 @@
 let particles = [];
 const num = 6000;
 let img;
-
+let mySound;
 const noiseScale = 0.01;
+
+function preload() {
+  soundFormats("mp3", "ogg");
+  mySound = loadSound("assets/eyes-closed.wav");
+}
 
 function setup() {
   var canvas = createCanvas(windowWidth, windowHeight);
@@ -15,6 +20,9 @@ function setup() {
 
 function draw() {
   background(0, 10);
+
+  mySound.play();
+
   push();
   // tint(255,50)
   // image(img,0,0,width, height)
