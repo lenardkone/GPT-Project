@@ -21,8 +21,6 @@ function setup() {
 function draw() {
   background(0, 10);
 
-  mySound.play();
-
   push();
   // tint(255,50)
   // image(img,0,0,width, height)
@@ -50,4 +48,8 @@ function mouseReleased() {
 
 function onScreen(v) {
   return v.x >= 0 && v.x <= width && v.y >= 0 && v.y <= height;
+}
+
+function mouseClicked() {
+  mySound.play();
 }
