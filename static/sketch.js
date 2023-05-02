@@ -5,7 +5,7 @@ let mySound;
 const noiseScale = 0.01;
 
 function preload() {
-  soundFormats("mp3", "ogg");
+  soundFormats("wav", "mp3");
   mySound = loadSound("assets/eyes-closed.wav");
 }
 
