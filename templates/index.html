@@ -9,11 +9,6 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
     />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/blotter.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/fliesMaterial.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Blotter/0.1.0/materials/liquidDistortMaterial.js"></script>
   </head>
   <body>
     <script>
@@ -22,6 +17,10 @@
 
     <section>
       <div id="canvas-wrapper"></div>
+
+      <div class="actionBar">
+        <button class="playBtn" onclick="playAudio()">▶</button>
+      </div>
 
       <div class="container">
         <div id="question">
@@ -35,7 +34,12 @@
 
         <form autocomplete="off" action="/submit" method="post">
           <div class="formLayout">
-            <input id="promptField" type="text" name="text_input" />
+            <input
+              id="promptField"
+              placeholder="Ask me anything"
+              type="text"
+              name="text_input"
+            />
 
             <button id="submitBtn" type="submit" value="Submit">
               Submit Question
@@ -54,5 +58,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
   </body>
 </html>
