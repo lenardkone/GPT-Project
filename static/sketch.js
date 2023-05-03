@@ -1,13 +1,7 @@
 let particles = [];
-const num = 6000;
+const num = 1000;
 let img;
-let mySound;
 const noiseScale = 0.01;
-
-function preload() {
-  soundFormats("wav", "mp3");
-  mySound = loadSound("assets/eyes-closed.wav");
-}
 
 function setup() {
   var canvas = createCanvas(windowWidth, windowHeight);
@@ -34,7 +28,7 @@ function draw() {
     let n = noise(p.x * noiseScale, p.y * noiseScale);
 
     let a = TAU * n;
-    p.x += cos(a);
+    p.x += -cos(a);
     p.y += sin(a);
     if (!onScreen(p)) {
       p.x = random(width);
@@ -50,6 +44,8 @@ function onScreen(v) {
   return v.x >= 0 && v.x <= width && v.y >= 0 && v.y <= height;
 }
 
-function mouseClicked() {
-  mySound.play();
-}
+var audio = new Audio("static/assets/eyes-closed.wav");
+audio.loop = true;
+
+audio.play();
+console.log(audio);
