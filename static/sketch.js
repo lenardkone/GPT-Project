@@ -1,7 +1,7 @@
 let particles = [];
-const num = 1000;
+const num = 20000;
 let img;
-const noiseScale = 0.01;
+const noiseScale = 0.004;
 
 function setup() {
   var canvas = createCanvas(windowWidth, windowHeight);
@@ -13,16 +13,11 @@ function setup() {
 }
 
 function draw() {
-  background(0, 10);
+  background(0, 30);
 
-  push();
-  // tint(255,50)
-  // image(img,0,0,width, height)
-
-  pop();
   for (let i = 0; i < num; i++) {
     let p = particles[i];
-    stroke(255);
+    stroke(204, 198, 242);
     strokeWeight(1);
     point(p.x, p.y);
     let n = noise(p.x * noiseScale, p.y * noiseScale);
@@ -44,7 +39,11 @@ function onScreen(v) {
   return v.x >= 0 && v.x <= width && v.y >= 0 && v.y <= height;
 }
 
-var audio = new Audio("static/assets/eyes-closed.wav");
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+var audio = new Audio("static/assets/splash.wav");
 audio.loop = true;
 
 audio.play();

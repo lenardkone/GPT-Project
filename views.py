@@ -19,7 +19,7 @@ def home():
 def submit():
     userPrompt = request.form['text_input']
 
-    messagePrompt = userPrompt + "Give an answer in a maximum of 40 words."
+    messagePrompt = userPrompt + "Give an answer in a maximum of 32 words."
     completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": messagePrompt}])
     OutputGPT= completion.choices[0].message.content
     

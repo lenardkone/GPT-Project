@@ -18,6 +18,10 @@
     <section>
       <div id="canvas-wrapper"></div>
 
+      <div class="actionBar">
+        <button class="playBtn" onclick="playAudio()">▶</button>
+      </div>
+
       <div class="container">
         <div id="question">
           <h4 class="textStyle">
@@ -30,7 +34,12 @@
 
         <form autocomplete="off" action="/submit" method="post">
           <div class="formLayout">
-            <input id="promptField" type="text" name="text_input" />
+            <input
+              id="promptField"
+              placeholder="Ask me anything"
+              type="text"
+              name="text_input"
+            />
 
             <button id="submitBtn" type="submit" value="Submit">
               Submit Question
