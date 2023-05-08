@@ -9,24 +9,39 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
   </head>
   <body>
     <script>
       var OutputGPT = "{{ OutputGPT }}";
     </script>
 
-    <section>
+    <section">
       <div id="canvas-wrapper"></div>
 
       <div class="actionBar">
-        <button class="playBtn">▶</button>
+
+
+          <button class="optionBtn downloadBtn">        
+            <i class="fa-solid fa-cloud-arrow-down fa-xs" style="color: #fff;"></i>    
+          </button>
+        
+   
+
+
+        <div class="soundControl">
+          <h6 class="audioStatusTag">SOUND:</h6>
+          <button class="optionBtn audioBtn">        
+            <i class="fa-solid fa-volume-xmark fa-xs" style="color: #fff;"></i>        
+          </button>
+        
+      </div>
+
       </div>
 
       <div class="container">
         <div id="question">
           <h4 class="textStyle">
-            <span style="font-weight: 600">Question: </span>{{ userPrompt }}
+            <span style="font-weight: 600; user-select: none;">Question: </span>{{ userPrompt }}
           </h4>
         </div>
         <div class="textContainer">
@@ -37,7 +52,7 @@
           <div class="formLayout">
             <input
               id="promptField"
-              placeholder="Ask me anything"
+              placeholder="Write your Prompt here"
               type="text"
               name="text_input"
             />
@@ -54,10 +69,10 @@
       type="text/javascript"
       src="{{ url_for('static', filename='sketch.js')}}"
     ></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.js"></script>
+    <script src="https://kit.fontawesome.com/41ee17b1a0.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
   </body>
 </html>
