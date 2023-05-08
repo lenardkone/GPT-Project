@@ -31,7 +31,8 @@ body {
   background-color: rgba(255, 255, 255, 0.04);
   padding: 4px 32px;
   border-radius: 12px;
-  margin: 80px 40px;
+  margin-top: 5%;
+  /* margin-bottom: 2%; */
   backdrop-filter: blur(12px);
   text-align: center;
 }
@@ -123,12 +124,13 @@ form {
   font-size: 12px;
   width: 140px;
   box-shadow: none;
+  z-index: 4;
 }
 
 #submitBtn:hover {
   background-color: rgb(214, 213, 241);
   color: rgb(13, 0, 255);
-  transition: 250ms ease-in;
+  /* transition: 250ms ease-in; */
 }
 
 canvas {
