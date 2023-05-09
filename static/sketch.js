@@ -102,7 +102,7 @@ function startAudio() {
   sound.play();
   speeechOutput = speechOutput.speed(0.9);
   // speeechOutput = speechOutput.amp(0.5);
-  speechOutput.play();
+  // speechOutput.play();
   document.getElementsByClassName("audioBtn")[0].innerHTML = "<i class='fa-solid fa-volume-high fa-xs' style='color: #ffffff;'></i>";
 
   }
@@ -116,7 +116,7 @@ function togglePlay() {
   //if sound is playing and the button is pressed change icon and stop the audio
   if (sound.isPlaying()) {
     document.getElementsByClassName("audioBtn")[0].innerHTML = "<i class='fa-solid fa-volume-xmark fa-xs' style='color: #fff;'></i>";
-    sound.stop();
+    sound.pause();
 
     //if it's pressed again start playing the sound in a loop and change button icon
   } else if(!sound.isPlaying()) {

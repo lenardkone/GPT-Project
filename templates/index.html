@@ -78,6 +78,7 @@
                   success: function(response) {
                      document.getElementsByClassName('heading')[0].innerHTML = response.OutputGPT;
                     document.getElementById('question').innerText = response.userPrompt;
+                    console.log(response)
                   }
               });
           });

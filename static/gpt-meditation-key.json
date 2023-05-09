@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gpt-meditation",
+  "private_key_id": "ff985759d935c8c0b619596203082600e895f190",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCXxPyKbfPTVtRW\nNPRvpFPXk6acc7DzSV5UvhMUtlY89V0v/StaKlB5wX0flkmS+WDKN/XrEbJzJb0u\nxIKKK4Yrx6xmAl0YY0O0UyqNL6+cKBUJVXlYDMb9EY1pNuU+aUdUCB9B6jfuFKTh\n6Z/mK79Z1r4UyGZ/B0tdeYIwV75fYXeNiJDS11jOD2QX0cTopFad/MDa1tXVPjvl\nkty/AckVQPmMwCCg0Y2FBPZrMfzh3YZNiiGGW6o0RgRfMFxbsme1igTzYKdGms3i\nfWVUTqarHDYXAJVjo2SfU0VQ4Tqmmb2zdVfrelNJs/4m/1H4V+6NOqak4Fn2/lKp\n4PerqV+dAgMBAAECggEACIo/WqvCuVzssFgk/AY/aIVIrguNhLcXbYXPjY4QDriQ\n0JM6pgV1B1DlsUoT5EcPlPlup1ZU2Ali2peYr90wnNSMxSWzZtypEePPJGgvRcZ0\nnpSWciev58wdzLKX1jn210notl0PXiB/wa2Tf5BtIUlF42X+bH301fLxKja5weSk\nMz0A4YJ4xev06kBCz9/b3/LSOP3tZF3i0OAWtXh1rCotz+JKOxeLhx1Wk5YN0L8H\nByW8ROQcuA+nKmXPBEaVXlTXzv4QheVi9lI0IIDx3kYF/AbKI25zlsgJGW0u1NfC\nsDVE+RpdBxiuC7Y0CoS5VgCsZSCrIEK7KYLOZBYDEQKBgQDLzqkX/lcDt2UZxofi\nvzsYC8Ey4dpflzXTqSEiIf1fo4vdFzLv+dFMWx57jLFNdZSHfJhF6GlSiWayhDb1\nQw25u+QGXrHmT17xohGA5eeQzWJHe1ek7PPCQ8rKKO2wgH///38s7lf6S3k3Qm7o\n0HCtHlx+7r1gcDmorI1gaPzPjQKBgQC+osvRcUtdBu0DaLAdrd47ne75OHoQ+WkC\nJ5coRiCsQFfvYm/VzvMpJqWcqgNJX6CH9WxsRwZhKnS+7S5gGLA6VDm+PaPWKJ1I\nTieoMiRZEODXQy8HLtk2/CAZuqYaKCRcJ3FtGhffpsO7FO6PY+6xi+JhIoM9xS+T\nHdWM0gOEUQKBgQCXswqf5lvEU2S4a9LHTwngWxeCFSRjFH0nP/N+oYgkAOrhNRxg\nDTXhvM0Sr2Vlv4g/1NjO6DBFFCrR46G4qyFzR0xyBVgrkpacCsM2i2nymT128XMK\nOqkxxx4RnadWQj+EQBvcSMhJcJYYMKW3OzczVK8KeA+T0dTJHS7aPSs4HQKBgDZi\n6XT6Nn72v92OG1iMRu+JMilFtIVtMkkcFGK4BxA9VxkDY1aDMRoXXX4hfsiLEJhZ\nKzKE3MwRubbSob1mrbgmWUbt/PTXJ2/+ZA/3JimGyC6Bi0QoWG34ZgwRFNw3gZAM\n7K4smI0E3ahc42ZjIzDh8Ja3quuPevAkvczsCXbRAoGAT+x5dMeZvSalJJgmue4f\nP/LoS5dlwl9jshJaQsZOJiMT7DktU9+OBxYF7Fdls8l0UQS/omKKL1MtFx0PuBgo\nPppaUrcxmEtOmVtFQED0gdxF04NpAnsLjB+ucFa+rNf0x1iWSa+XU4Q+LLpGuJG5\nc8xIsGuMLCl7OqRJ45lLTg8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "lenardkone@gpt-meditation.iam.gserviceaccount.com",
+  "client_id": "110274081340539182321",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lenardkone%40gpt-meditation.iam.gserviceaccount.com"
+}
