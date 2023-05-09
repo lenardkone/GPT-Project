@@ -24,16 +24,11 @@ def submit():
     OutputGPT= completion.choices[0].message.content
     
     print(OutputGPT) 
-    return render_template('index.html', OutputGPT=OutputGPT, userPrompt=userPrompt)
+    return jsonify(OutputGPT=OutputGPT, userPrompt=userPrompt)
     
 
-@views.route('/fetchtest', methods=['GET'])
-def fetchtest():
-    fetchVar = {'greeting':'Hello from Flask!'}
 
-    return jsonify(fetchVar)
-
-    
+  
 
 
 
