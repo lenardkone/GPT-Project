@@ -25,7 +25,7 @@
 
         </div>
         <div class="textContainer">
-          <h1 class="heading">Welcome to Lenny's Meditation Shed</h1>
+          <h1 class="heading">Describe how you're feeling today</h1>
         </div>
 
         <form autocomplete="off">
@@ -76,13 +76,47 @@
                   url: '/submit',
                   data: $('form').serialize(),
                   success: function(response) {
-                     document.getElementsByClassName('heading')[0].innerHTML = response.OutputGPT;
+                    //  document.getElementsByClassName('heading')[0].innerHTML = response.OutputGPT;
                     document.getElementById('question').innerText = response.userPrompt;
                     console.log(response)
+                    document.getElementById("promptField").value = "";
+
+                    var resultJS = response.OutputGPT;
+
+                        fetch('/tts-process', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ resultJS: resultJS })
+                        })
+                        .then(response => response.text())
+                        .then(result => console.log(result))
+                        .then(function speechStart(){
+                                $.ajax({
+                                  url: 'static/assets/speech.mp3',
+                                  xhrFields: {
+                                    responseType: 'blob'
+                                  },
+                                  success: function(blob) {
+                                    var audio = new Audio();
+                                    audio.src = URL.createObjectURL(blob);
+                                    audio.play();
+                                  
+
+                                  }                            
+                                }); 
+                                })
+                        .catch(error => console.error(error));
+
                   }
               });
           });
       });
+
+      
+
+
   </script>
   
   

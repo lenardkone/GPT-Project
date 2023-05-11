@@ -18,7 +18,7 @@ let micInput;
 
 function preload() {
   sound = loadSound("static/assets/eyes-closed.wav");
-  speechOutput = createAudio("static/assets/speech - amy.mp3")
+  // speechOutput = loadSound("static/assets/speech.mp3")
 }
 
 function setup() {
@@ -100,9 +100,7 @@ document.getElementById('promptField').addEventListener('click', startAudio);
 function startAudio() {
   if(sound.isLoaded()){
   sound.play();
-  speeechOutput = speechOutput.speed(0.9);
-  // speeechOutput = speechOutput.amp(0.5);
-  // speechOutput.play();
+  
   document.getElementsByClassName("audioBtn")[0].innerHTML = "<i class='fa-solid fa-volume-high fa-xs' style='color: #ffffff;'></i>";
 
   }
@@ -144,15 +142,3 @@ function togglePlay() {
 
 
 
-
-
-// DEPRICATED
-
-// volume = sound.getAmp();
-// let v = Math.round((volume + Number.EPSILON) * 100) / 100
-
-// for(v; v === 0; v-0.001){
-//   if(v<=0.01){
-//     sound.stop();
-//   }
-// }
