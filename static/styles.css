@@ -6,6 +6,7 @@ body {
   font-stretch: expanded;
   color: rgb(180, 180, 180);
   z-index: -2;
+  
 
   /* animation-name: rhythmBG;
   background-color: rgb(4, 4, 20);
@@ -23,6 +24,14 @@ body {
 }
 
 
+.logo{
+
+  height: 64px;
+  position: relative;
+  z-index: 2;
+
+}
+
 
 .textContainer {
   display: flex;
@@ -31,6 +40,7 @@ body {
   height: 50vh;
   width: 60vw;
   user-select: none;
+  flex-direction: column;
 }
 
 .heading {
@@ -66,7 +76,7 @@ body {
   margin-top: 40px;
   max-width: 60vw;
   background-color: rgba(255, 255, 255, 0.04);
-  padding: 16px 32px;
+  padding: 2% 4%;
   border-radius: 12px;
   margin-top: 5%;
   /* margin-bottom: 2%; */

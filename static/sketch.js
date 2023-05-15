@@ -18,7 +18,7 @@ let micInput;
 
 function preload() {
   sound = loadSound("static/assets/eyes-closed.wav");
-  // speechOutput = loadSound("static/assets/speech.mp3")
+  speech = loadSound("static/assets/speech.mp3")
 }
 
 function setup() {
@@ -76,6 +76,8 @@ function draw() {
     }
     
 
+
+
   }
 
 
@@ -97,14 +99,21 @@ function windowResized() {
 
 document.getElementById('promptField').addEventListener('click', startAudio);
 
-function startAudio() {
-  if(sound.isLoaded()){
-  sound.play();
-  
-  document.getElementsByClassName("audioBtn")[0].innerHTML = "<i class='fa-solid fa-volume-high fa-xs' style='color: #ffffff;'></i>";
 
+function stopAudio() {
+  if(sound.isPlaying()){
+    sound.pause();
   }
 }
+
+function startAudio() {
+  setTimeout(function(){
+  if(sound.isLoaded()){
+      sound.loop();
+      document.getElementsByClassName("audioBtn")[0].innerHTML = "<i class='fa-solid fa-volume-high fa-xs' style='color: #ffffff;'></i>";
+      } },1000)
+  }
+
 
 
 document.getElementsByClassName('audioBtn')[0].addEventListener('click', togglePlay);
@@ -118,7 +127,7 @@ function togglePlay() {
 
     //if it's pressed again start playing the sound in a loop and change button icon
   } else if(!sound.isPlaying()) {
-    sound.play();
+    sound.loop();
 
     amplitude = new p5.Amplitude();
     amplitude.setInput(sound);
@@ -126,6 +135,14 @@ function togglePlay() {
   }
 
 }
+
+
+
+
+
+
+
+
 
 
 
