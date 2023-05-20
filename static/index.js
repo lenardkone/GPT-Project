@@ -192,7 +192,7 @@
                                     setTimeout(function(){
                                     fadeIn(headingText);
                                     headingText.innerHTML = "Meditation Playing...";
-                                           
+                                    
 
                                     //AJAX request for Blob from speech.wav 
                                         $.ajax({
@@ -202,7 +202,10 @@
                                           },
                                           success: function(blob) {
                                       
-                                           
+                                            if (currentSpeech) {
+                                              currentSpeech.pause();
+                                              currentSpeech.currentTime = 0;
+                                            }
                                             
                                             
                                             //Create Audio Object from Blob
@@ -235,7 +238,7 @@
 
                                                   //if sound is playing and the button is pressed stop the audio
                                                   if (!currentSpeech.paused && currentSpeech.duration > 0) {
-                                                    // currentSpeech.pause();
+                                                    // speech.pause(); ---causes playback error!!
                                                   
                                                     currentSpeech.currentTime = 0;
                                                     
