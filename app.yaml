@@ -1,2 +1,6 @@
-runtime: python39
+runtime: python27
+threadsafe: true
+runtime_config:
+    runtime_version: "3.11"
 entrypoint: gunicorn -b :$PORT main:app
+
