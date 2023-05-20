@@ -16,11 +16,13 @@ let micFactor;
 let volume;
 let micInput;
 
-
+function preload(){
+  sound = loadSound("static/assets/splash.wav");
+  speech = loadSound("static/assets/speech.wav");
+}
 
 function setup() {
-  sound = loadSound("static/assets/splash.wav");
-  speech = loadSound("static/assets/speech.wav")
+  
   var canvas = createCanvas(windowWidth, windowHeight,);
   canvas.parent("canvas-wrapper");
 

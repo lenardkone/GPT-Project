@@ -1,18 +1,35 @@
 
             var headingText = document.getElementsByClassName('heading')[0];
-            var loader = document.getElementById('loader')
+            var loader = document.getElementById('loader');
             var breathDiv = document.getElementsByClassName('breathDiv')[0];
             var replayButton = document.getElementsByClassName('replayBtn')[0];
+            var downloadButton = document.getElementsByClassName('downloadBtn')[0];
+            var audioButton = document.getElementsByClassName('soundControl')[0];
+            var submitButton = document.getElementById('submitBtn');
             var promptField = document.getElementById("promptField");
             var previousQuestion = document.getElementById('question');
-            var loadingVar;
+            var currentSpeech;
 
+            downloadButton.style.opacity = '0';
+            audioButton.style.opacity = '0';
+            promptField.style.opacity = '0';
+            submitButton.style.opacity = '0';
             fadeIn(headingText);
 
+            setTimeout(() =>{            
+            fadeIn(promptField);
+            },2000)
 
+            setTimeout(() =>{ fadeIn(submitButton);  },2600)  
+
+            setTimeout(() =>{ 
+              fadeIn(downloadButton);
+              fadeIn(audioButton); 
+            },6000)  
 
             
-
+            const loadingTextElement = document.getElementById('loading-text');
+            loadingTextElement.textContent = '';
 
 
             
@@ -81,15 +98,19 @@
 
                 $(document).ready(function() {
                   var currentSpeech = null;
-                  $('form').on('submit', function(event, stopSpeech) {
+                  $('form').on('submit', function(event) {
                     event.preventDefault();
                     //Hide Breath Animation & Replay Button for Resubmit
                     hideBreath();
                     replayButton.style.opacity = 0;
                     replayButton.style.display = 'none'
                     
+                    if (currentSpeech) {
+                      currentSpeech.pause();
+                      currentSpeech.currentTime = 0;
+                    }
                     
-                    
+                      
                     //LOADING SCREEN with switching 
                   
                         loader.style.display = 'block';
@@ -170,7 +191,7 @@
 
                                     setTimeout(function(){
                                     fadeIn(headingText);
-                                    headingText.innerHTML = "Meditation Playing";
+                                    headingText.innerHTML = "Meditation Playing...";
                                            
 
                                     //AJAX request for Blob from speech.wav 
@@ -181,10 +202,7 @@
                                           },
                                           success: function(blob) {
                                       
-                                            if (currentSpeech) {
-                                                currentSpeech.pause();
-                                                currentSpeech.currentTime = 0;
-                                              }
+                                           
                                             
                                             
                                             //Create Audio Object from Blob
@@ -216,30 +234,24 @@
                                             function toggleReplay() {
 
                                                   //if sound is playing and the button is pressed stop the audio
-                                                  if (!speech.paused && speech.duration > 0) {
-                                                    speech.pause();
-                                                    speech.currentTime = 0;
+                                                  if (!currentSpeech.paused && currentSpeech.duration > 0) {
+                                                    // currentSpeech.pause();
+                                                  
+                                                    currentSpeech.currentTime = 0;
+                                                    
 
                                                     //if it's pressed again start playing the sound
-                                                  } else if(speech.paused || speech.ended) {
-                                                    speech.play();
+                                                  } else if(currentSpeech.paused || currentSpeech.ended) {
+                                                    currentSpeech.play();
                                                   }
                                               }
 
-                                              function stopSpeech(){
-                                                if (!currentSpeech.paused && currentSpeech.duration > 0) {
-                                                    currentSpeech.pause();
-                                                    speech.pause();
-                                                    currentSpeech.currentTime = 0;
-                                                    speech.currentTime = 0;
-
-                                                  }
-                                              }
+                                             
 
                                           }                            
                                         }); 
 
-                                                },2000)
+                                                },1000)
                                         })
                                 
                                 .catch(error => console.error(error));
