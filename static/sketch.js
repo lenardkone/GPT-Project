@@ -1,7 +1,7 @@
 
 //NOISE -- variables
 let particles = [];
-const num = 12000;
+const num = 10000;
 
 //higher value forms more dense waves
 const noiseScale = 0.004;
@@ -16,12 +16,11 @@ let micFactor;
 let volume;
 let micInput;
 
-function preload() {
-  sound = loadSound("static/assets/eyes-closed.wav");
-  speech = loadSound("static/assets/speech.mp3")
-}
+
 
 function setup() {
+  sound = loadSound("static/assets/splash.wav");
+  speech = loadSound("static/assets/speech.wav")
   var canvas = createCanvas(windowWidth, windowHeight,);
   canvas.parent("canvas-wrapper");
 
@@ -38,7 +37,7 @@ function setup() {
 
 
 function draw() {
-  background(0, 30);
+  background(0,25);
 
 //SOUND -- get the volume level of the audio and map it to a variable  
 
@@ -96,22 +95,20 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
+var promptField = document.getElementById('promptField');
 
-document.getElementById('promptField').addEventListener('click', startAudio);
 
-
-function stopAudio() {
-  if(sound.isPlaying()){
-    sound.pause();
-  }
-}
+  promptField.addEventListener('click', startAudio);
 
 function startAudio() {
-  setTimeout(function(){
+
+  
   if(sound.isLoaded()){
       sound.loop();
       document.getElementsByClassName("audioBtn")[0].innerHTML = "<i class='fa-solid fa-volume-high fa-xs' style='color: #ffffff;'></i>";
-      } },1000)
+      }
+      promptField.removeEventListener('click', startAudio);
+
   }
 
 
@@ -136,13 +133,20 @@ function togglePlay() {
 
 }
 
+document.getElementById('saveCanvasBtn').addEventListener('click', downloadImg);
 
 
+document.getElementById('saveCanvasBtn').addEventListener('click', function(event) {
+  event.stopPropagation();
+}
+)
 
 
+function downloadImg(){
 
+saveCanvas('Meditationscape', '.png');
 
-
+}
 
 
 

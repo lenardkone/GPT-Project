@@ -24,6 +24,26 @@ body {
 }
 
 
+#loader {
+  display: none;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  border: 4px solid #223;
+  border-radius: 50%;
+  border-top: 4px solid #fff;
+  border-top-left-radius: 50%;  
+  border-top-right-radius: 50%;
+  animation: spin 2s linear infinite;
+  margin-bottom: 4%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(50deg); }
+  100% { transform: rotate(410deg); }
+}
+
+
 .logo{
 
   height: 64px;
@@ -51,37 +71,38 @@ body {
   background-color: #09090b88;
   box-shadow: 0 0 150px 150px #09090b88;
   opacity: 0;
-
-  animation: textfadeIn ease 3s;
-  animation-fill-mode: forwards;
-  animation-delay: 3s;
   
 }
 
-@keyframes textfadeIn {
-  0% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
-   }
-
+.transitionIn {
+transition: opacity 1.6s ease-in;
 }
 
+.transitionOut {
+  transition: opacity 1s ease-out;
+  }
 
 
+.transitionDelay{
+  transition-delay: 1s;
+  }
+  
+
+
+  
 
 
 #question {
-  margin-top: 40px;
+  opacity: 0;
   max-width: 60vw;
   background-color: rgba(255, 255, 255, 0.04);
-  padding: 2% 4%;
+  padding: 4px 24px;
   border-radius: 12px;
   margin-top: 5%;
   /* margin-bottom: 2%; */
   backdrop-filter: blur(12px);
   text-align: center;
+  transition: opacity 2s;
 }
 
 .textStyle {
@@ -177,7 +198,7 @@ form {
 #submitBtn:hover {
   background-color: rgb(214, 213, 241);
   color: rgb(13, 0, 255);
-  /* transition: 250ms ease-in; */
+  transition: 100ms ease-in;
 }
 
 canvas {
@@ -197,7 +218,7 @@ canvas {
       opacity: 0.1;
   }
   100% {
-      opacity: 0.5;
+      opacity: 0.3;
    }
 
 }
@@ -223,6 +244,7 @@ canvas {
 
 }
 
+
 .audioStatusTag{
   font-size: 12px;
   font-weight: 400;
@@ -237,7 +259,6 @@ canvas {
   border-color: rgba(255, 255, 255, 0.203);
   color: white;
   font-size: 15px;
-
   width: 42px;
   height: 42px;
   
@@ -256,12 +277,85 @@ canvas {
 
 .downloadBtn{
   margin-left: 24px;
+  
+}
+.replayBtn{
+  margin-left: 12px;
+ opacity: 0;
+ /* display: none; */
 }
 
 .audioBtn{
   margin-right: 24px;
 
 }
+
+
+
+
+/* ------BREATHING ANIMATION----- */
+
+
+.breathDiv{
+  display: none;
+  background-color: #09090b88;
+  box-shadow: 0 0 150px 150px #09090b88;
+
+}
+
+.breathCircle{
+  border: 0.5px solid rgba(255, 255, 255, 0);
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  border-radius: 100%;
+    transform: translate(-50%,-50%); 
+
+  animation: breath 16s ease-in-out infinite
+}
+
+.breathCircle2{
+  border: 1px solid rgba(255, 255, 255, 0);
+  width: 8px;
+  height: 8px;
+  
+  border-radius: 100%;
+  position: absolute;
+    transform: translate(-50%,-50%);
+
+  animation: breath2 16s ease-in-out infinite
+}
+
+
+
+
+@keyframes breath {
+25% {
+  border: 0.5px solid  rgba(255, 255, 255, 0.4);
+  
+  width: 240px;
+  height: 240px;
+  border-radius: 100%;
+    transform:translate(-50%,-50%);
+}   
+}
+
+@keyframes breath2 {
+25% {
+  border: 0.8px solid #fff;
+  
+  width: 180px;
+  height: 180px;
+  border-radius: 100%;
+    transform:translate(-50%,-50%);
+
+}   
+}
+
+
+
+
+
 
 
 
@@ -279,3 +373,9 @@ canvas {
     width: 80vw;
   }
 }
+
+
+
+
+
+

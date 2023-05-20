@@ -1,0 +1,100 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Lenny GPT</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"/>
+    <link rel="icon" type="image/svg" href="static/assets/favicongpt.svg">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+  
+      <div id="canvas-wrapper"></div>
+
+
+      
+       
+      
+
+      <div class="container">
+        <div id="question">
+
+                  <h4 class="textStyle"></h4>
+
+        </div>
+        <div class="textContainer">
+                <!-- <img class="logo" src="static/logo.svg" alt="The Meditation Lab"> -->
+                <div id="loader"></div>
+
+                <div class="breathDiv">
+                    <div class="breathCircle"></div>
+                    <div class="breathCircle2"></div>
+                </div>
+
+                <h1 class="heading">Welcome to The Meditation Realm</h1>
+          
+        </div>
+
+        <form autocomplete="off">
+          <div class="formLayout">
+            <input
+              id="promptField"
+              placeholder="Describe how you're feeling today here"
+              type="text"
+              name="text_input"
+            />
+
+            <button id="submitBtn" type="submit" value="Submit">
+              Submit Question
+            </button>
+          </div>
+        </form>
+      </div>
+
+
+        <div class="actionBar">
+
+          <div class="leftBtnGroup">
+            <button class="optionBtn downloadBtn" id="saveCanvasBtn">        
+              <i class="fa-solid fa-cloud-arrow-down fa-xs" style="color: #fff;"></i>    
+            </button>
+          
+            <button class="optionBtn replayBtn">        
+              <i class="fa-solid fa-repeat fa-xs" style="color: #fff;"></i>
+            </button>
+
+          </div>  
+
+          <div class="soundControl">
+            <h6 class="audioStatusTag">SOUND:</h6>
+            <button class="optionBtn audioBtn">        
+              <i class="fa-solid fa-volume-xmark fa-xs" style="color: #fff;"></i>        
+            </button>
+          
+          </div>
+
+          
+
+      </div>
+
+
+    </section>
+
+
+  <script src="static/index.js"></script>
+  
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='sketch.js')}}"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.js"></script>
+    <script src="https://kit.fontawesome.com/41ee17b1a0.js" crossorigin="anonymous"></script>
+  </body>
+</html>

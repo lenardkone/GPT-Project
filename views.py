@@ -14,25 +14,35 @@ client = texttospeech.TextToSpeechClient.from_service_account_file('static/tts-k
 
 views = Blueprint(__name__, "views")
 
-@views.route("/")
+@views.route('/')
 def home():
-    return render_template("index.html")
+    return render_template("welcome.html")
+
+
+@views.route("/meditation")
+def main():
+    return render_template("meditation.html")
 
 @views.route("/submit", methods=['POST'])
 def submit():
     userPrompt = request.form['text_input']
     
 
-    messagePrompt = userPrompt
-    completion = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=[
-        {"role": "system", "content": "Act as an ssml script generator for text-to-speech with the task of creating a guided meditation based on how the user is feeling."},
-        {"role": "user", "content": "Generate a meditation script for ssml text to speech based on the following example. Don't write an Introduction before the ssml script! I will provide you with a specific emotion for the topic of the meditation"},
-        {"role": 'assistant', "content": "What is the example I should use as a broad guideline for the script? "},
-        {"role": "user", "content": "<speak><prosody volume='loud' rate='slow'>Find a quiet and comfortable place where you won't be disturbed... <break time='1s'/> Sit down and close your eyes... <break time='1s'/> Take a deep breath in through your nose, and then exhale through your mouth, letting go of any tension... <break time='1s'/> As you continue to breathe, allow yourself to acknowledge and feel any sadness or pain you may be experiencing... <break time='1s'/> Notice where you feel this emotion in your body - is it in your chest, your stomach, or elsewhere?...  <break time='1s'/>  Imagine yourself holding this feeling in your hands, cradling it with compassion and understanding...  <break time='1s'/>  Visualize this feeling as a cloud of mist that you can breathe in and out with each breath...  <break time='1s'/>  With each inhale, allow the mist to fill your body and bring comfort and peace...  <break time='1s'/>  With each exhale, release any tension or pain that you may be holding onto...  <break time='1s'/>  Remember that it's okay to feel sad, and that this feeling will eventually pass...  <break time='1s'/>  Offer yourself kindness and support in this moment...  <break time='1s'/> When you're ready, take a deep breath in, and then exhale fully, letting go of any remaining tension or discomfort...  <break time='1s'/>  Open your eyes and take a moment to ground yourself in your surroundings...  <break time='1s'/>  Remember that you can return to this meditation anytime you need to find comfort and support in your emotions...  </prosody></speak>"},
+
+
+
+    completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "Generate a creative and emotive ssml script for a meditation routine with breathing exercises based on how the user is feeling. It should include breaks and vivid visualisations about the topic. Only respond to prompts that include feelings."},
+        {"role": "user", "content": "<speak><prosody volume='loud' rate='80%'>Find a quiet and comfortable place where you won't be disturbed... <break time='1s'/> Sit down and take a deep breath in through your nose, and then exhale through your mouth, letting go of any tension... <break time='1s'/> As you continue to breathe, allow yourself to think about your parents and the love they have given you... <break time='1s'/> Visualize them in your mind's eye and feel the warmth of their embrace... <break time='1s'/> Think about all the sacrifices they have made for you, the lessons they have taught you, and the memories you have shared...  <break time='1s'/>  Allow yourself to feel a deep sense of gratitude for the gift of their presence in your life...  <break time='1s'/>  Imagine a golden light surrounding you, emanating from your heart...  <break time='1s'/>  With each inhale, feel this light expanding and growing, filling your body with warmth and love...  <break time='1s'/>  With each exhale, visualize this light reaching out to your parents, enveloping them in a warm embrace of gratitude and love...  <break time='1s'/>  Take a moment to offer them your heartfelt thanks and appreciation...  <break time='1s'/>  When you're ready, take a deep breath in, and then exhale fully, letting go of any remaining tension or discomfort...  <break time='1s'/>  Open your eyes and take a moment to ground yourself in your surroundings...  <break time='1s'/>  Remember that the love and gratitude you feel for your parents can be a source of strength and comfort whenever you need it...</prosody></speak>"},
         {"role": "assistant", "content": "What are the feelings you are experiencing?"},
-        {"role": "user", "content": messagePrompt},
-        ]
-    )
+        {"role": "user", "content": userPrompt},
+    ]
+)
+
+
+
     OutputGPT= completion.choices[0].message.content
     
     print(OutputGPT) 
@@ -40,12 +50,12 @@ def submit():
     
 
 
-@views.route('/tts-process', methods=['POST'])
+@views.route('/tts', methods=['POST'])
 
 def tts():
     data = request.get_json()
     result = data["resultJS"]
-
+    
 
     synthesis_input = texttospeech.SynthesisInput(ssml=result)
 
@@ -55,14 +65,18 @@ def tts():
             ssml_gender=texttospeech.SsmlVoiceGender.MALE,)
 
     audio_config = texttospeech.AudioConfig(
-            audio_encoding=texttospeech.AudioEncoding.MP3)
+            audio_encoding=texttospeech.AudioEncoding.LINEAR16, 
+            sample_rate_hertz=48000
+)
 
+
+  
     response = client.synthesize_speech(
             input=synthesis_input, voice=voice, audio_config=audio_config)
 
-    with open("static/assets/speech.mp3", "wb") as out:
+    with open("static/assets/speech.wav", "wb") as out:
             out.write(response.audio_content)
-            print('Audio content written to file "speech.mp3"')
+            print('Audio content written to file "speech.wav"')
     return result
 
   
