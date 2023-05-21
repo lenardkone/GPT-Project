@@ -1,3 +1,5 @@
+const loadingTextElement = document.getElementById('loading-text');
+            loadingTextElement.textContent = '';
 
             
             var headingText = document.getElementsByClassName('heading')[0];
@@ -26,7 +28,6 @@
             fadeIn(promptField);
             },2000)
 
-            setTimeout(() =>{ fadeIn(submitButton);  },5000)  
 
 
             promptField.addEventListener('focus', promptFieldFocus);
@@ -34,13 +35,16 @@
             function promptFieldFocus(){
             
               fadeIn(downloadButton);
-              fadeIn(audioButton); 
+              fadeIn(audioButton);
+              setTimeout(() =>{ fadeIn(submitButton);},1000);
+
               promptField.removeEventListener('focus',promptFieldFocus);
           }
 
+          
+
+
             
-            const loadingTextElement = document.getElementById('loading-text');
-            loadingTextElement.textContent = '';
 
 
             
