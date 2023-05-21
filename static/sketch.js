@@ -7,7 +7,6 @@ const num = 10000;
 const noiseScale = 0.004;
 
 //SOUND -- variables
-let sound;
 let speechOutput;
 let button;
 let amplitude;
@@ -17,9 +16,13 @@ let volume;
 let micInput;
 
 function preload(){
-  sound = loadSound("static/assets/splash.wav");
+  sound = loadSound("static/assets/music.wav");
   speech = loadSound("static/assets/speech.wav");
+ 
 }
+
+
+
 
 function setup() {
   
@@ -115,9 +118,9 @@ function startAudio() {
 
 
 
-document.getElementsByClassName('audioBtn')[0].addEventListener('click', togglePlay);
+document.getElementsByClassName('audioBtn')[0].addEventListener('click', toggleMusic);
 // SOUND -- toggle function for button
-function togglePlay() {
+function toggleMusic() {
 
   //if sound is playing and the button is pressed change icon and stop the audio
   if (sound.isPlaying()) {

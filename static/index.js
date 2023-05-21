@@ -1,4 +1,5 @@
 
+            
             var headingText = document.getElementsByClassName('heading')[0];
             var loader = document.getElementById('loader');
             var breathDiv = document.getElementsByClassName('breathDiv')[0];
@@ -9,23 +10,33 @@
             var promptField = document.getElementById("promptField");
             var previousQuestion = document.getElementById('question');
             var currentSpeech;
+            var anger, affirmations, grief, sleep, overthink, frustration;
 
+
+            //INITIALIZE VALUES FOR FADE IN
             downloadButton.style.opacity = '0';
             audioButton.style.opacity = '0';
             promptField.style.opacity = '0';
             submitButton.style.opacity = '0';
             fadeIn(headingText);
 
+            //ON PAGE LOAD ANIMATIONS
+
             setTimeout(() =>{            
             fadeIn(promptField);
             },2000)
 
-            setTimeout(() =>{ fadeIn(submitButton);  },2600)  
+            setTimeout(() =>{ fadeIn(submitButton);  },5000)  
 
-            setTimeout(() =>{ 
+
+            promptField.addEventListener('focus', promptFieldFocus);
+
+            function promptFieldFocus(){
+            
               fadeIn(downloadButton);
               fadeIn(audioButton); 
-            },6000)  
+              promptField.removeEventListener('focus',promptFieldFocus);
+          }
 
             
             const loadingTextElement = document.getElementById('loading-text');
@@ -79,10 +90,7 @@
 
 
 
-         
-          
-
-          //Breathing Animation visibility functions
+          //Breathing Animation visibility control functions
 
           function showBreath(){
               breathDiv.style.display = 'block';
@@ -92,9 +100,14 @@
 
             }
               
-              
-          
-                //EXECUTE ON SUBMIT
+
+
+
+
+
+
+
+//---------------------------------------EXECUTE ON SUBMIT----------------------------------------------------------------
 
                 $(document).ready(function() {
                   var currentSpeech = null;
@@ -263,5 +276,45 @@
                       });
                   });
                 });
+
+
+
+
+
+
+
+
+
+
+            // MEDITATION LIBRARY ---------------------AUDIO PLAYBACK FUNCTIONS
+              
+              anger =        new Audio("static/assets/anger.wav");
+              sleep =        new Audio("static/assets/sleep.wav");
+              overthink =    new Audio( "static/assets/overthink.wav");
+              grief =        new Audio("static/assets/grief.wav");
+              frustration =   new Audio("static/assets/frustration.wav");
+              affirmations = new Audio("static/assets/affirmations.wav");
+
+
+            function togglePlay(a, num) {
+              a.onended =()=>{document.getElementsByClassName('cardPlayBtn')[num].innerHTML ="<i class='fa-solid fa-play fa-xs' style='color: #ffffff;'></i>";}
+
+            
+              //if sound is playing and the button is pressed change icon and stop the audio
+              if (a.paused) {
+                a.play();
+                document.getElementsByClassName('cardPlayBtn')[num].innerHTML = "<i class='fa-solid fa-stop fa-xs' style='color: #fff;'></i>";
+
+                //if it's pressed again start playing the sound and change button icon
+              } else {
+                a.pause();
+                a.currentTime = 0;
+
+                document.getElementsByClassName("cardPlayBtn")[num].innerHTML = "<i class='fa-solid fa-play fa-xs' style='color: #ffffff;'></i>";
+              }
+            
+            }
+
+
 
                           
