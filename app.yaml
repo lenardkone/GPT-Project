@@ -1,6 +1,11 @@
 runtime: python39
+runtime_config:
+    
+    runtime_version: "3.9.16"
 
-entrypoint: gunicorn -b :$PORT main:app
+
+entrypoint: gunicorn -b :4000 main:app
+
 
 env_variables:
   GOOGLE_APPLICATION_CREDENTIALS: 'static/tts-key.json'
