@@ -15,19 +15,17 @@ let micFactor;
 let volume;
 let micInput;
 
-function preload(){
-  sound = loadSound("static/assets/music.wav");
-  speech = loadSound("static/assets/speech.wav");
- 
-}
-
 
 
 
 function setup() {
-  
+  sound = loadSound("static/assets/music.wav");
+  speech = loadSound("static/assets/speech.wav");
+ 
   var canvas = createCanvas(windowWidth, windowHeight,);
   canvas.parent("canvas-wrapper");
+
+  
 
   for (let i = 0; i < num; i++) {
     particles.push(createVector(random(width), random(height)));
@@ -42,7 +40,7 @@ function setup() {
 
 
 function draw() {
-  background(0,25);
+  background(3, 3, 14, 25);
 
 //SOUND -- get the volume level of the audio and map it to a variable  
 

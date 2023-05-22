@@ -24,9 +24,39 @@ const loadingTextElement = document.getElementById('loading-text');
 
             //ON PAGE LOAD ANIMATIONS
 
+
+            var timeout7 = setTimeout(function(){fadeOut(headingText);},3000)
+
+            var timeout8 = setTimeout(function(){
+              fadeIn(headingText);
+              // headingText.innerHTML = "Best Experienced with Headphones";
+              headingText.innerHTML = "Put on your Headphones";
+
+            },5000)
+            var timeout9 = setTimeout(function(){fadeOut(headingText);},8000)
+
+            var timeout10 = setTimeout(function(){
+              fadeIn(headingText);
+              headingText.innerHTML = "Describe your Emotional State or Topic for a Meditation";
+
+            },10000)
+            var timeout11 = setTimeout(function(){fadeOut(headingText);},13000)
+
+            var timeout12 = setTimeout(function(){
+              fadeIn(headingText);
+              headingText.innerHTML = "How are we feeling today?";
+
+            },14000)
+
+
+
+
+
+
+
             setTimeout(() =>{            
             fadeIn(promptField);
-            },2000)
+            },9000)
 
 
 
