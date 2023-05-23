@@ -4,8 +4,7 @@ runtime_config:
     runtime_version: "3.9.16"
 
 
-entrypoint: gunicorn -b :4000 main:app
-
+entrypoint: gunicorn -b :8080 app:app
 
 env_variables:
   GOOGLE_APPLICATION_CREDENTIALS: 'static/tts-key.json'
@@ -16,3 +15,4 @@ handlers:
 
   - url: /.*
     script: auto
+

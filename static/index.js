@@ -39,7 +39,7 @@ const loadingTextElement = document.getElementById('loading-text');
               
                   const y = element.getBoundingClientRect().top + window.scrollY;
                   window.scroll({
-                    top: y - 74,
+                    top: y - 72,
                     behavior: 'smooth'
                   });
 

@@ -1,7 +1,7 @@
 
 //NOISE -- variables
 let particles = [];
-const num = 4000;
+const num = 6000;
 let particleColor = '198, 192, 244';
 
 //higher value forms more dense waves
@@ -20,7 +20,7 @@ let micInput;
 
 
 function setup() {
-  sound = loadSound("static/assets/music.wav");
+  sound = loadSound("static/assets/music.mp3");
   speech = loadSound("static/assets/speech.wav");
  
   var canvas = createCanvas(windowWidth, windowHeight,);
