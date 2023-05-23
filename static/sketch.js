@@ -1,7 +1,8 @@
 
 //NOISE -- variables
 let particles = [];
-const num = 10000;
+const num = 4000;
+let particleColor = '198, 192, 244';
 
 //higher value forms more dense waves
 const noiseScale = 0.004;
@@ -40,7 +41,7 @@ function setup() {
 
 
 function draw() {
-  background(3, 3, 14, 25);
+  background(3, 3, 14, 20);
 
 //SOUND -- get the volume level of the audio and map it to a variable  
 
@@ -56,7 +57,7 @@ function draw() {
 //NOISE -- add particles and flow field
   for (let i = 0; i < num; i++) {
     let p = particles[i];
-    stroke(198, 192, 244);
+    stroke(particleColor);
     strokeWeight(1);
     point(p.x, p.y);
     let noiseVar = noise(p.x * noiseScale, p.y * noiseScale);
@@ -101,7 +102,7 @@ function windowResized() {
 var promptField = document.getElementById('promptField');
 
 
-  promptField.addEventListener('click', startAudio);
+  promptField.addEventListener('keypress', startAudio);
 
 function startAudio() {
 
@@ -110,7 +111,7 @@ function startAudio() {
       sound.loop();
       document.getElementsByClassName("audioBtn")[0].innerHTML = "<i class='fa-solid fa-volume-high fa-xs' style='color: #ffffff;'></i>";
       }
-      promptField.removeEventListener('click', startAudio);
+      promptField.removeEventListener('keypress', startAudio);
 
   }
 

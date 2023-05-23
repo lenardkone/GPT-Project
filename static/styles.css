@@ -1,11 +1,18 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+
 body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+  
   margin: 0;
-  /* background-color: rgb(4, 4, 20); */
-  background-color: rgb(3, 3, 14);
+  background-color: rgb(5, 5, 22);
+  /* background-color: rgb(3, 3, 14); */
 
   padding: 0;
   font-family: "poppins";
-  font-stretch: expanded;
+  /* font-stretch: expanded; */
   color: rgb(180, 180, 180);
   z-index: -2;
   line-height: 125%;
@@ -24,6 +31,13 @@ body {
   }
   100% {background-color: rgb(4, 4, 20);
   }*/
+}
+
+.main {
+  height: 96vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -72,8 +86,8 @@ body {
   font-size: 28px;
   font-weight: 400;
   text-align: center;
-  background-color: #09090b88;
-  box-shadow: 0 0 150px 150px #09090b88;
+  background-color: #05051683;
+  box-shadow: 0 0 150px 150px #05051683;
   opacity: 0;
   position: relative;
   line-height: normal;
@@ -121,12 +135,7 @@ transition: opacity 1.6s ease-in;
   font-weight: 500;
 }
 
-.main {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 .container {
   display: flex;
@@ -155,65 +164,99 @@ form {
   width: 100%;
 }
 
+
+
+.inputBox{
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: (0,0,0,0.05);
+  backdrop-filter: blur(12px);
+
+}
+
+.inputBox:hover {
+ 
+  scale: 1.05;
+  transition: 280ms ease-in;
+  /* outline: solid 0.5px; */
+  outline: none;
+  /* outline-color: rgb(255, 255, 255); */
+  /* border-radius: 8px; */
+
+}
+
 #promptField {
   padding: 16px;
-  background-color: rgba(0, 0, 0, 0.15);
-
+  background-color: #00000000;
   border: solid 0.5px;
   border-color: rgba(255, 255, 255, 0.4);
   color: white;
   border-radius: 8px;
-  max-width: 400px;
+  max-width: 360px;
   width: 72vw;
-  margin-bottom: 8%;
-  backdrop-filter: blur(12px);
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  border-right: none;
+  outline: none;
+
 }
 
 #promptField:focus {
-  outline: solid 1px;
-  outline-color: rgb(135, 188, 235);
-  /* border-radius: 8px; */
-  scale: 1.05;
-  transition: 280ms ease-in;
+  outline: none;
 }
 
+
 #promptField:hover {
-  outline: solid 1px;
-  outline-color: rgb(135, 188, 235);
-  scale: 1.05;
-  transition: 280ms ease-in;
+  outline: none;
+  
 }
 
 #promptField::placeholder {
-  color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.25);
   user-select: none;
 }
 
-#submitBtn {
-  padding: 20px 20px;
+
+
+#generateBtn{
+  padding: 23.6px 24px;
   font-weight: 500;
-  color: rgb(255, 215, 215);
-  background-color: rgba(13, 0, 255, 1);
-  /* background-color: #ff4281; */
-  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0);
+  border: solid 0.5px;
+  
+  border-color: rgba(255, 255, 255, 0.4);
+
+  color: white;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
   font-size: 12px;
-  width: 140px;
+  
   box-shadow: none;
   z-index: 4;
-  border: none;
 }
 
-#submitBtn:hover {
-  background-color: rgb(214, 213, 241);
-  color: rgb(13, 0, 255);
-  transition: 100ms ease-in;
+#generateBtn:hover {
+  background-color: #0d00ff;
+  transition: 200ms ease-in;
+  color: #fff;
+  border-color: #0d00ff;
+
 }
+
+
+
+
 
 canvas {
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
+
+  
 
   animation: fadeInAnimation ease-in-out 14s;
   animation-iteration-count: 1;
@@ -244,6 +287,9 @@ canvas {
   padding: 0px, 40px;
 }
 
+.leftBtnGroup{
+  display: flex;
+}
 
 .soundControl{
 
@@ -287,10 +333,42 @@ canvas {
   margin-left: 24px;
   
 }
+
+#cPicker{
+  background-color: rgba(255, 255, 255, 0.04);
+  border: solid 0.5px;
+  border-color: rgba(255, 255, 255, 0.203);
+  color: white;
+  font-size: 15px;
+  width: 42px;
+  height: 42px;
+  margin-left: 12px;
+  border-radius: 32px;
+  backdrop-filter: blur(12px);
+  
+}
+#cPicker::-webkit-color-swatch{
+  border-radius: 32px;
+}
+
+#cPicker::-webkit-color-swatch-wrapper{
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  width: 16px;
+  height: 20px;
+}
+
+#cPicker:hover{
+  scale: 1.2;
+  transition: 300ms;
+  border-color: rgb(255, 255, 255);
+  font-size: 15px;
+}
+
 .replayBtn{
   margin-left: 12px;
  opacity: 0;
- /* display: none; */
 }
 
 .audioBtn{
@@ -367,8 +445,10 @@ canvas {
 /* MEDITATION LIBRARY ------------------------------------------*/
 
 .library{
-  background-color: #050713c9;
-  backdrop-filter: blur(40px);
+  border-top: solid 0.5px;
+  border-color: rgba(255,255,255, 0.1);
+  background-color: #080b1c63;
+  backdrop-filter: blur(32px);
   display: flex;
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
@@ -376,10 +456,39 @@ canvas {
   justify-content: center;
   align-items: left;
   flex-direction: column;
-  padding: 24px;
+  padding: 8px 24px 24px 24px;
   box-sizing: border-box;
 
+
+
 }
+
+
+
+.dragWrapper{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.dragPill{
+
+  width: 82px;
+  min-width: 48px;
+  height: 8px;
+  border-radius: 32px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 8px 200px;
+  
+
+}
+
+
+
+
 
 .cardContainer{
   display: flex;
@@ -462,7 +571,8 @@ justify-content: space-between;
 
 .libraryHeadingWrapper{
   padding-left: 16px;
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin: 24px 0;
   
 }
@@ -474,17 +584,23 @@ justify-content: space-between;
   font-family: 'Poppins';
   font-size: 2rem;
   margin: 12px 0;
+  width: 100%;
+
+  
 }
 
 .libraryDiscription{
   font-weight: 300;
   font-size: 15px;
   color: rgba(255, 255, 255, 0.4);
-  width: 380px;
   margin: 12px 0;
-  font-kerning: 110%;
+  width: 380px;
+
+  
 
 }
+
+
 
 
 
@@ -508,10 +624,7 @@ justify-content: space-between;
 
   }
 
-  #promptField{
-    margin-bottom: 16%;
-
-  }
+  
 
 }
 
@@ -522,6 +635,14 @@ justify-content: space-between;
 
 .replayBtn{
 display: none !important;
+}
+
+.libraryHeading{
+line-height: 120%;
+}
+
+.libraryDiscription{
+  width: 100%;
 }
 
 

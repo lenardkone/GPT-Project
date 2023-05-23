@@ -8,9 +8,16 @@ const loadingTextElement = document.getElementById('loading-text');
             var replayButton = document.getElementsByClassName('replayBtn')[0];
             var downloadButton = document.getElementsByClassName('downloadBtn')[0];
             var audioButton = document.getElementsByClassName('soundControl')[0];
+            var colorPicker = document.getElementById('cPicker');
             var submitButton = document.getElementById('submitBtn');
+            var generateButton = document.getElementById('generateBtn');
+            var inputBox = document.getElementsByClassName('inputBox')[0]
             var promptField = document.getElementById("promptField");
             var previousQuestion = document.getElementById('question');
+            var medCards = document.querySelectorAll('.meditationCard');
+            var cardTexts = document.querySelectorAll('.cardText');
+            var cardPlayButtons = document.querySelectorAll('.cardPlayBtn');
+
             var currentSpeech;
             var anger, affirmations, grief, sleep, overthink, frustration;
 
@@ -18,33 +25,142 @@ const loadingTextElement = document.getElementById('loading-text');
             //INITIALIZE VALUES FOR FADE IN
             downloadButton.style.opacity = '0';
             audioButton.style.opacity = '0';
-            promptField.style.opacity = '0';
-            submitButton.style.opacity = '0';
+            inputBox.style.opacity = '0'
+            colorPicker.style.opacity = '0'
+            // submitButton.style.opacity = '0';
             fadeIn(headingText);
+
+
+
+
+             document.getElementsByClassName('dragPill')[0].addEventListener('click', ()=>{
+
+              var element = document.getElementsByClassName('library')[0]
+              
+                  const y = element.getBoundingClientRect().top + window.scrollY;
+                  window.scroll({
+                    top: y - 74,
+                    behavior: 'smooth'
+                  });
+
+                  if(window.scrollY > 0){
+                    window.scroll({
+                      top: 0,
+                      behavior: 'smooth'
+                    });
+                  }
+            })
+
+
+
+
+
+            colorPicker.addEventListener('input', () => {
+
+              var cPick = colorPicker.value;
+
+              headingText.style.color = cPick;
+              headingText.style.filter = 'brightness(120%)';
+              particleColor = cPick;
+
+
+
+                  inputBox.addEventListener('mouseover', function(){
+                    generateButton.style.backgroundColor = cPick;
+                    generateButton.style.transition = '200ms';                    
+                    generateButton.style.color = cPick;
+                    document.querySelector('.arrowIcon').style.filter = 'brightness(40%)';
+
+                  });
+
+
+                  inputBox.addEventListener('mouseout', function(){
+                    generateButton.style.backgroundColor = 'transparent';
+                    generateButton.style.color = cPick;
+                    document.querySelector('.arrowIcon').style.filter = 'none';
+
+                  });
+
+
+                  generateButton.addEventListener('mouseover',()=>{
+                    generateButton.style.borderColor = cPick;
+                  })
+
+                  generateButton.addEventListener('mouseout',()=>{
+                    generateButton.style.borderColor =  'rgba(255, 255, 255, 0.4)';
+;
+                  })
+      
+                   
+
+
+                    for(var n = 0; n < medCards.length ; n++){
+                      let medCard = medCards[n];
+                      let cardText = cardTexts[n];
+                      let cardPlayButton = cardPlayButtons[n];
+
+                          medCard.addEventListener('mouseover', function(){
+                            medCard.style.backgroundColor = cPick;
+                            cardText.style.color = cPick;
+                            cardText.style.filter = 'brightness(40%)';
+                           
+                          });
+                          
+                          
+                          medCard.addEventListener('mouseout', function(){
+                            medCard.style.backgroundColor = '#ccd1f203';
+                            cardText.style.color = 'white';
+                            cardText.style.filter = 'none';
+                       
+
+
+                            });
+                          }
+            })
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             //ON PAGE LOAD ANIMATIONS
 
 
-            var timeout7 = setTimeout(function(){fadeOut(headingText);},3000)
-
-            var timeout8 = setTimeout(function(){
-              fadeIn(headingText);
-              // headingText.innerHTML = "Best Experienced with Headphones";
-              headingText.innerHTML = "Put on your Headphones";
-
-            },5000)
-            var timeout9 = setTimeout(function(){fadeOut(headingText);},8000)
+            var timeout9 = setTimeout(function(){fadeOut(headingText);},3000)
 
             var timeout10 = setTimeout(function(){
               fadeIn(headingText);
-              headingText.innerHTML = "Describe your Emotional State or Topic for a Meditation";
-
-            },10000)
-            var timeout11 = setTimeout(function(){fadeOut(headingText);},13000)
+              // headingText.innerHTML = "Best Experienced with Headphones";
+              headingText.innerHTML = "Put on your Headphones";
+              
+            },5000)
+            var timeout11 = setTimeout(function(){fadeOut(headingText);},8000)
 
             var timeout12 = setTimeout(function(){
               fadeIn(headingText);
-              headingText.innerHTML = "How are we feeling today?";
+              // headingText.innerHTML = "Describe your Emotional State or Topic for a Meditation";
+              // headingText.innerHTML = "Let's start meditating, shall we?";
+              headingText.innerHTML = "Type the Topic for your Meditation Routine";
+
+
+            },10000)
+            var timeout13 = setTimeout(function(){fadeOut(headingText);},12000)
+
+            var timeout14 = setTimeout(function(){
+              fadeIn(headingText);
+              // headingText.innerHTML = "Tell me what feelings you're experiencing";
+              headingText.innerHTML = "How are you feeling today?";
 
             },14000)
 
@@ -52,25 +168,35 @@ const loadingTextElement = document.getElementById('loading-text');
 
 
 
+            // fadeIn(inputBox);
 
 
             setTimeout(() =>{            
-            fadeIn(promptField);
-            },9000)
+            fadeIn(inputBox);
+            },10000)
 
 
 
-            promptField.addEventListener('focus', promptFieldFocus);
+            inputBox.addEventListener('keypress', inputBoxKey);
 
-            function promptFieldFocus(){
+            function inputBoxKey(){
             
               fadeIn(downloadButton);
               fadeIn(audioButton);
-              setTimeout(() =>{ fadeIn(submitButton);},1000);
+              fadeIn(colorPicker);
 
-              promptField.removeEventListener('focus',promptFieldFocus);
+              inputBox.removeEventListener('keypress',inputBoxKey);
           }
+              inputBox.addEventListener('click', inputBoxClick);
 
+              function inputBoxClick(){
+              
+                fadeIn(downloadButton);
+                fadeIn(audioButton);
+                fadeIn(colorPicker);
+
+                inputBox.removeEventListener('click',inputBoxClick);
+            }
           
 
 
@@ -147,6 +273,13 @@ const loadingTextElement = document.getElementById('loading-text');
                   var currentSpeech = null;
                   $('form').on('submit', function(event) {
                     event.preventDefault();
+
+                    clearTimeout(timeout10);
+                    clearTimeout(timeout11);
+                    clearTimeout(timeout12);
+                    clearTimeout(timeout13);
+                    clearTimeout(timeout14);
+
                     //Hide Breath Animation & Replay Button for Resubmit
                     hideBreath();
                     replayButton.style.opacity = 0;
@@ -174,20 +307,28 @@ const loadingTextElement = document.getElementById('loading-text');
                           
                         },10000)
 
-                        var timeout3 = setTimeout(function(){fadeOut(headingText);},19000)
+                        var timeout3 = setTimeout(function(){fadeOut(headingText);},15000)
 
                         var timeout4 = setTimeout(function(){
-                          headingText.innerHTML = "Patience is a great virtue";
                           fadeIn(headingText);
-                        },20000)
+                          headingText.innerHTML = "About 30 seconds remaining";
+                          
+                        },16000)
 
-                        var timeout5 = setTimeout(function(){fadeOut(headingText);},31000)
+                        var timeout5 = setTimeout(function(){fadeOut(headingText);},24000)
 
                         var timeout6 = setTimeout(function(){
+                          headingText.innerHTML = "Patience is a great virtue";
+                          fadeIn(headingText);
+                        },25000)
+
+                        var timeout7 = setTimeout(function(){fadeOut(headingText);},34000)
+
+                        var timeout8 = setTimeout(function(){
                           
                           headingText.innerHTML = "Hang tight, we're almost there";
                           fadeIn(headingText);
-                        },32000)
+                        },35000)
                         
                   
                         
@@ -235,6 +376,8 @@ const loadingTextElement = document.getElementById('loading-text');
                                     clearTimeout(timeout4);
                                     clearTimeout(timeout5);
                                     clearTimeout(timeout6);
+                                    clearTimeout(timeout7);
+                                    clearTimeout(timeout8);
 
                                     setTimeout(function(){
                                     fadeIn(headingText);

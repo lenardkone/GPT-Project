@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Lenny GPT</title>
+    <title>Lenny's Mind Haven</title>
     
     <link
       rel="stylesheet"
@@ -40,23 +40,29 @@
                     <div class="breathCircle2"></div>
                 </div>
 
-                <h1 class="heading">Welcome to The Meditation Realm</h1>
+                <h1 class="heading">Welcome to The Meditation Space</h1>
           
         </div>
 
         <form autocomplete="off">
           <div class="formLayout">
+            <div class="inputBox">
+
             <input
               id="promptField"
-              placeholder="Describe how you're feeling today here"
+              placeholder="e.g. I am feeling stressed out because of my co-worker"
               type="text"
               name="text_input"
+              autofocus
             />
 
-            <button id="submitBtn" type="submit" value="Submit">
+            <button id="generateBtn" type="submit" value="Submit"><i class="arrowIcon fa-solid fa-arrow-right fa-sm"></i></button>
+            </div>
+
+            <!-- <button id="submitBtn" type="submit" value="Submit">
               Generate Audio
 
-            </button>
+            </button> -->
           </div>
         </form>
       </div>
@@ -68,7 +74,10 @@
             <button class="optionBtn downloadBtn" id="saveCanvasBtn">        
               <i class="fa-solid fa-cloud-arrow-down fa-xs" style="color: #fff;"></i>    
             </button>
-          
+            
+              <input type="color" id="cPicker" name="cPicker" value="#9ef9ff">
+
+
             <button class="optionBtn replayBtn">        
               <i class="fa-solid fa-repeat fa-xs" style="color: #fff;"></i>
             </button>
@@ -94,14 +103,17 @@
 
       <section class="library">
         
+        <div class="dragWrapper">
+          <div class="dragPill"></div>
+        </div>
 
         <div class="libraryHeaderWrapper">
           
           <div class="libraryHeadingWrapper">
               <h2 class="libraryHeading">Meditation Library</h2>
-              <p class="libraryDiscription">Here is a selection of guided meditations for improved mental health, inner peace and serenity.</p>
+              <p class="libraryDiscription">Here is a selection of guided meditations for improved mental health & inner peace.</p>
           </div>
-          <img class="libraryDecoImg" style="width: 128px; margin: 48px" src="static/assets/favicon-v2.svg">
+          <!-- <img class="libraryDecoImg" style="width: 128px; margin: 48px" src="static/assets/favicon-v2.svg"> -->
           
         </div>
 
@@ -109,7 +121,7 @@
         <div class="cardContainer">
 
           
-          <div class="meditationCard">
+          <div class="meditationCard ">
             <h3 class="cardText">Anger Management 101</h3>
             <button class=" cardPlayBtn" onclick="togglePlay(anger,0)">        
               <i class="fa-solid fa-play fa-xs" style="color: #fff;"></i>
