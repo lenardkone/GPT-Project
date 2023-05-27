@@ -123,6 +123,7 @@ transition: opacity 1.6s ease-in;
   backdrop-filter: blur(12px);
   text-align: center;
   transition: opacity 2s;
+  user-select: none;
 }
 
 .textStyle {
@@ -269,7 +270,7 @@ canvas {
       opacity: 0.025;
   }
   100% {
-      opacity: 0.2;
+      opacity: 0.25;
    }
 
 }
@@ -285,6 +286,7 @@ canvas {
   justify-content: space-between;
   align-items: center;
   padding: 0px, 40px;
+  user-select: none;
 }
 
 .leftBtnGroup{
@@ -458,7 +460,7 @@ canvas {
   flex-direction: column;
   padding: 4px 24px 24px 24px;
   box-sizing: border-box;
-
+  user-select: none;
 
 
 }
@@ -485,6 +487,7 @@ canvas {
   
 
 }
+
 
 
 
@@ -536,6 +539,8 @@ text-align: left;
 padding: 0px;
 margin: 16px;
 max-width: 100px;
+transition: 400ms;
+
 
 }
 
@@ -560,6 +565,14 @@ max-width: 100px;
   font-size: 15px;
 
 }
+
+
+.cardPlayBtnIcon{
+
+color: white;
+
+}
+
 
 
 .libraryHeaderWrapper{

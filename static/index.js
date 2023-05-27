@@ -17,6 +17,10 @@ const loadingTextElement = document.getElementById('loading-text');
             var medCards = document.querySelectorAll('.meditationCard');
             var cardTexts = document.querySelectorAll('.cardText');
             var cardPlayButtons = document.querySelectorAll('.cardPlayBtn');
+            var cardPlayButtonIcons = document.querySelectorAll('.cardPlayBtnIcon');
+            var dragPill = document.getElementsByClassName('dragPill')[0];
+            var library = document.getElementsByClassName('library')[0]
+
 
             var currentSpeech;
             var anger, affirmations, grief, sleep, overthink, frustration;
@@ -32,12 +36,11 @@ const loadingTextElement = document.getElementById('loading-text');
 
 
 
-
+            //
              document.getElementsByClassName('dragPill')[0].addEventListener('click', ()=>{
 
-              var element = document.getElementsByClassName('library')[0]
               
-                  const y = element.getBoundingClientRect().top + window.scrollY;
+                  const y = library.getBoundingClientRect().top + window.scrollY;
                   window.scroll({
                     top: y - 72,
                     behavior: 'smooth'
@@ -51,8 +54,20 @@ const loadingTextElement = document.getElementById('loading-text');
                   }
             })
 
+            
 
+            dragPill.addEventListener('mouseover', ()=>{   
+              dragPill.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+                  dragPill.style.transition = '200ms ease-in;'
+                  
+            })
+            dragPill.addEventListener('mouseout', ()=>{
 
+              dragPill.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+              dragPill.style.transition = '200ms ease-out'
+            })
+
+        
 
 
             colorPicker.addEventListener('input', () => {
@@ -60,7 +75,7 @@ const loadingTextElement = document.getElementById('loading-text');
               var cPick = colorPicker.value;
 
               headingText.style.color = cPick;
-              headingText.style.filter = 'brightness(120%)';
+              headingText.style.filter = 'brightness(140%)';
               particleColor = cPick;
 
 
@@ -98,19 +113,31 @@ const loadingTextElement = document.getElementById('loading-text');
                       let medCard = medCards[n];
                       let cardText = cardTexts[n];
                       let cardPlayButton = cardPlayButtons[n];
+                      // let cardPlayButtonIcon = cardPlayButtonIcons[n];
+
 
                           medCard.addEventListener('mouseover', function(){
+                            
                             medCard.style.backgroundColor = cPick;
+                            cardText.style.filter = 'brightness(30%)';
                             cardText.style.color = cPick;
-                            cardText.style.filter = 'brightness(40%)';
-                           
+                            cardPlayButton.style.filter = 'brightness(20%)';
+                            cardPlayButton.style.borderColor = cPick;
+                            // cardPlayButtonIcon.style.filter = 'brightness(40%)';
+                            // cardPlayButtonIcon.style.color = cPick;
+
                           });
                           
                           
                           medCard.addEventListener('mouseout', function(){
                             medCard.style.backgroundColor = '#ccd1f203';
-                            cardText.style.color = 'white';
                             cardText.style.filter = 'none';
+                            cardText.style.color = 'white';
+                            cardPlayButton.style.filter = 'none';
+                            cardPlayButton.style.borderColor = "rgba(255, 255, 255, 0.2)";
+                            // cardPlayButtonIcon.style.filter = 'none';
+                            // cardPlayButtonIcon.style.color = 'white';
+
                        
 
 
