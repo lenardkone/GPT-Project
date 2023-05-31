@@ -18,7 +18,9 @@ const loadingTextElement = document.getElementById('loading-text');
             var cardPlayButtons = document.querySelectorAll('.cardPlayBtn');
             var cardPlayButtonIcons = document.querySelectorAll('.cardPlayBtnIcon');
             var dragPill = document.getElementsByClassName('dragPill')[0];
-            var library = document.getElementsByClassName('library')[0]
+            var library = document.getElementsByClassName('library')[0];
+            var libraryHelperTag = document.getElementsByClassName('libraryHelperTag')[0];
+
 
 
             var currentSpeech;
@@ -30,17 +32,17 @@ const loadingTextElement = document.getElementById('loading-text');
             audioButton.style.opacity = '0';
             inputBox.style.opacity = '0'
             colorPicker.style.opacity = '0'
-            // submitButton.style.opacity = '0';
             fadeIn(headingText);
+            libraryHelperTag.style.opacity = '0';
 
 
+
+            var y = library.getBoundingClientRect().top + window.scrollY;
 
             // drag pill click opens meditation library
              document.getElementsByClassName('dragPill')[0].addEventListener('click', ()=>{
 
-              
-                  const y = library.getBoundingClientRect().top + window.scrollY;
-                  window.scroll({
+                    window.scroll({
                     top: y - 72,
                     behavior: 'smooth'
                   });
@@ -50,10 +52,27 @@ const loadingTextElement = document.getElementById('loading-text');
                       top: 0,
                       behavior: 'smooth'
                     });
+                  
                   }
             })
 
-            
+            document.addEventListener('scroll', ()=>{
+
+              if(window.scrollY > 0){
+             
+                document.getElementsByClassName('libraryHelperTag')[0].style.opacity = '0';
+                document.getElementsByClassName('libraryHelperTag')[0].style.transition = '300ms ease-out';
+  
+              // }else{
+              //   document.getElementsByClassName('libraryHelperTag')[0].style.opacity = '1';
+              //   document.getElementsByClassName('libraryHelperTag')[0].style.transition = '300ms ease-in';
+
+              }
+            })
+           
+
+
+
 
             dragPill.addEventListener('mouseover', ()=>{   
               dragPill.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
@@ -185,11 +204,12 @@ const loadingTextElement = document.getElementById('loading-text');
             var timeout14 = setTimeout(function(){
               fadeIn(headingText);
               // headingText.innerHTML = "Tell me what feelings you're experiencing";
-              headingText.innerHTML = "What's on your Mind?";
-
+              headingText.innerHTML = "What's on your Mind?";              
             },14000)
 
-
+            setTimeout(()=>{
+              libraryHelperTag.style.opacity = '1';
+           },15000)
 
 
 
@@ -198,7 +218,7 @@ const loadingTextElement = document.getElementById('loading-text');
 
             setTimeout(() =>{            
             fadeIn(inputBox);
-            
+
             },10000)
 
             // setTimeout(() =>{            

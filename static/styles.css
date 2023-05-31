@@ -456,7 +456,8 @@ left: auto;
 
 .libraryHelperTag{
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.3);
+  transition: 1000ms ease-in;
   font-weight: 200;
   font-family: 'Poppins';}
 
