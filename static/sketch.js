@@ -1,3 +1,4 @@
+//This sketch.js file renders the flow field as an HTML5 Canvas & controls Audio interaction
 
 //NOISE -- variables
 let particles = [];
@@ -26,16 +27,22 @@ function setup() {
   var canvas = createCanvas(windowWidth, windowHeight,);
   canvas.parent("canvas-wrapper");
 
-  
+/*
+This video tutorial has helped me a lot to create a particle array in p5
+I have modified the code so that the noise reacts to sound and adapts to the viewport size.
 
+Title: Easy Perlin Noise Flow Fields
+Author: Barney Codes
+Date: 17/09/2021
+Availability: https://youtu.be/sZBfLgfsvSk
+*/
   for (let i = 0; i < num; i++) {
     particles.push(createVector(random(width), random(height)));
   }
 
-  //SOUND -- create amplitude object & mic input
+  //SOUND -- create amplitude object
   amplitude = new p5.Amplitude();
-  // micInput = new p5.AudioIn();
-  // micInput.start();
+ 
 
 }
 
@@ -45,13 +52,9 @@ function draw() {
 
 //SOUND -- get the volume level of the audio and map it to a variable  
 
-  // let micLevel = micInput.getLevel();
   let soundLevel = amplitude.getLevel();
   soundFactor = map(soundLevel, 0, 0.4, 1, 5);
-  // micFactor = map((micLevel * 100), 0, 1.2, 0.2, 1);
-
-  // console.log("sound: " + soundFactor);
-  // console.log("mic " + micFactor);
+ 
 
 
 //NOISE -- add particles and flow field
@@ -73,14 +76,11 @@ function draw() {
     }
   }
 
-  //if the audio Sound is higher than 2 the flow field changes directions
+  //if the audio Sound is higher than 3 the flow field changes directions
   if(soundFactor >= 3 && soundFactor <= 3.01){
     noiseSeed(random(1000));
     }
     
-
-
-
   }
 
 
@@ -99,25 +99,29 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
+
+//keypress starts playback of background sound
 var promptField = document.getElementById('promptField');
 
-
   promptField.addEventListener('keypress', startAudio);
+  promptField.addEventListener('click', startAudio);
 
 function startAudio() {
-
   
   if(sound.isLoaded()){
       sound.loop();
       document.getElementsByClassName("audioBtn")[0].innerHTML = "<i class='fa-solid fa-volume-high fa-xs' style='color: #ffffff;'></i>";
       }
       promptField.removeEventListener('keypress', startAudio);
+      promptField.removeEventListener('click', startAudio);
 
   }
 
 
-
+//On button click background audio turns on/off
 document.getElementsByClassName('audioBtn')[0].addEventListener('click', toggleMusic);
+
+
 // SOUND -- toggle function for button
 function toggleMusic() {
 
@@ -137,6 +141,8 @@ function toggleMusic() {
 
 }
 
+//Background Image Download button functionality
+
 document.getElementById('saveCanvasBtn').addEventListener('click', downloadImg);
 
 
@@ -144,7 +150,6 @@ document.getElementById('saveCanvasBtn').addEventListener('click', function(even
   event.stopPropagation();
 }
 )
-
 
 function downloadImg(){
 

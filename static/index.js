@@ -1,7 +1,96 @@
-const loadingTextElement = document.getElementById('loading-text');
+/* 
+
+
+Here is the list of all Libraries, Frameworks and APIs used in this project:
+
+
+Python Software Foundation. (2022). Python(Version 3.9.16) [Programming Language]. https://www.python.org/downloads/
+
+The Pallets Projects. (2023). Flask(Version 2.2.2) [Source Code - Python Framework]. https://pypi.org/project/Flask/2.2.2/
+
+OpenAI. (2022). OpenAI. API(Version 0.27.4) [Source Code - API]. https://platform.openai.com/docs/api-reference
+
+Google. (2023). Cloud Text-to-Speech API(Version 2.14.1) [Source Code - API]. https://cloud.google.com/text-to-speech/docs/libraries
+
+The jQuery Team. (2023) JQuery.(Version: 3.6.4)[Source Code - Javascript Library].https://jquery.com/download/
+
+Processing Foundation. (2021) p5.js.(Version: 1.4.0)[Source Code - Javascript Library].https://p5js.org/download/
+
+
+
+These written guides and video tutorials have contributed to the development of this program:
+
+
+Title: Introduction - Perlin Noise and p5.js Tutorial
+Author: Daniel Schiffman
+Date: 23/06/2016
+Availability: https://youtu.be/Qf4dIN99e2w
+
+Title: The Beauty of Code: Flow Fields
+Author: Chris Courses
+Date: 09/08/2021
+Availability: https://youtu.be/na7LuZsW2UM
+
+Title: API Series #3 - How to Deploy Flask APIs to the Cloud (GCP)
+Author: James Briggs
+Date: 02/11/2021
+Availability: https://youtu.be/3fsIcMgUOY8
+
+Title: Google Cloud Text-to-Speech AI API in Python - Creating a Python Program (Part 2)
+Author: Jie Jenn
+Date: 17/12/2020
+Availability: https://youtu.be/ZXnPMzmrmIY
+
+Title: P5.js Tutorial | Create a generative art using image data
+Author: weidi
+Date: 23/02/2021
+Availability: https://youtu.be/me04ZrTJqWA
+
+Title: How to Pass JavaScript Variable to Python Function
+Author: Sky Alpha Tech
+Date: 05/04/2021
+Availability: https://youtu.be/6rPxwj1sR5c
+
+Title: Sending POST requests using AJAX (via JavaScript)to a Python Backend (via Flask)
+Author: ZeroLife
+Date: 12/04/2021
+Availability: https://youtu.be/-XchxUQTcfQ
+
+Title: Python for AI #1: Dev Environment Setup
+Author: Assembly AI
+Date: 08/03/2023
+Availability: https://youtu.be/yTJxDzqo4fQ
+
+Title: 17.4: Amplitude Analysis - p5.js Sound Tutorial
+Author: Daniel Shiffman
+Date: 09/06/2016
+Availability: https://youtu.be/NCCHQwNAN6Y
+
+Title: How to create a new branch on GitHub // Commit & Push
+Author: Kahan Data Solutions
+Date: 31/03/2021
+Availability:https://youtu.be/Lf3DYRvCPFo
+
+Title: Make A Python Website As Fast As Possible
+Author: Tech with Tim
+Date: 13/09/2021
+Availability: https://youtu.be/kng-mJJby8g
+
+Title: Python Flask Tutorial: Full-Featured Web App Part 1 - Getting Started
+Author: Corey Schafer
+Date: 04/05/2018
+Availability: https://youtu.be/MwZwr5Tvyxo
+
+
+
+
+*/
+
+            const loadingTextElement = document.getElementById('loading-text');
             loadingTextElement.textContent = '';
 
-            
+            //Here I define the variables for the DOM Elements:
+
             var headingText = document.getElementsByClassName('heading')[0];
             var loader = document.getElementById('loader');
             var breathDiv = document.getElementsByClassName('breathDiv')[0];
@@ -21,8 +110,7 @@ const loadingTextElement = document.getElementById('loading-text');
             var library = document.getElementsByClassName('library')[0];
             var libraryHelperTag = document.getElementsByClassName('libraryHelperTag')[0];
 
-
-
+            //Declare sound file variables
             var currentSpeech;
             var anger, affirmations, grief, sleep, overthink, frustration;
 
@@ -37,9 +125,14 @@ const loadingTextElement = document.getElementById('loading-text');
 
 
 
-            var y = library.getBoundingClientRect().top + window.scrollY;
+
+
+
 
             // drag pill click opens meditation library
+
+            var y = library.getBoundingClientRect().top + window.scrollY;
+
              document.getElementsByClassName('dragPill')[0].addEventListener('click', ()=>{
 
                     window.scroll({
@@ -51,28 +144,21 @@ const loadingTextElement = document.getElementById('loading-text');
                     window.scroll({
                       top: 0,
                       behavior: 'smooth'
-                    });
-                  
+                    });              
                   }
-            })
+              })
 
+
+            //hide library indicator text on page scroll
             document.addEventListener('scroll', ()=>{
 
               if(window.scrollY > 0){
              
                 document.getElementsByClassName('libraryHelperTag')[0].style.opacity = '0';
-                document.getElementsByClassName('libraryHelperTag')[0].style.transition = '300ms ease-out';
-  
-              // }else{
-              //   document.getElementsByClassName('libraryHelperTag')[0].style.opacity = '1';
-              //   document.getElementsByClassName('libraryHelperTag')[0].style.transition = '300ms ease-in';
-
+                document.getElementsByClassName('libraryHelperTag')[0].style.transition = '300ms ease-out';          
               }
             })
            
-
-
-
 
             dragPill.addEventListener('mouseover', ()=>{   
               dragPill.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
@@ -86,7 +172,8 @@ const loadingTextElement = document.getElementById('loading-text');
             })
 
         
-        // color picker input changes app theme
+
+        // color picker input changes the application theme
             colorPicker.addEventListener('input', () => {
 
               var cPick = colorPicker.value;
@@ -105,7 +192,6 @@ const loadingTextElement = document.getElementById('loading-text');
 
                   });
 
-
                   inputBox.addEventListener('mouseout', function(){
                     generateButton.style.backgroundColor = 'transparent';
                     generateButton.style.color = cPick;
@@ -120,18 +206,17 @@ const loadingTextElement = document.getElementById('loading-text');
 
                   generateButton.addEventListener('mouseout',()=>{
                     generateButton.style.borderColor =  'rgba(255, 255, 255, 0.4)';
-;
+
                   })
       
                    
 
 
-                    for(var n = 0; n < medCards.length ; n++){
+                  for(var n = 0; n < medCards.length ; n++){
                       let medCard = medCards[n];
                       let cardText = cardTexts[n];
                       let cardPlayButton = cardPlayButtons[n];
-                      // let cardPlayButtonIcon = cardPlayButtonIcons[n];
-
+                     
 
                           medCard.addEventListener('mouseover', function(){
                             
@@ -140,9 +225,7 @@ const loadingTextElement = document.getElementById('loading-text');
                             cardText.style.color = cPick;
                             cardPlayButton.style.filter = 'brightness(20%)';
                             cardPlayButton.style.borderColor = cPick;
-                            // cardPlayButtonIcon.style.filter = 'brightness(40%)';
-                            // cardPlayButtonIcon.style.color = cPick;
-
+                           
                           });
                           
                           
@@ -151,15 +234,10 @@ const loadingTextElement = document.getElementById('loading-text');
                             cardText.style.filter = 'none';
                             cardText.style.color = 'white';
                             cardPlayButton.style.filter = 'none';
-                            cardPlayButton.style.borderColor = "rgba(255, 255, 255, 0.2)";
-                            // cardPlayButtonIcon.style.filter = 'none';
-                            // cardPlayButtonIcon.style.color = 'white';
-
-                       
-
-
+                            cardPlayButton.style.borderColor = "rgba(255, 255, 255, 0.2)";                               
                             });
-                          }
+
+                  }
             })
 
             
@@ -174,21 +252,18 @@ const loadingTextElement = document.getElementById('loading-text');
 
 
 
-
-
-
-
             //ON PAGE LOAD ANIMATIONS
+            // I am using timeout functions to delay the animation of the heading text
 
 
             var timeout9 = setTimeout(function(){fadeOut(headingText);},3000)
 
             var timeout10 = setTimeout(function(){
               fadeIn(headingText);
-              // headingText.innerHTML = "Best Experienced with Headphones";
-              headingText.innerHTML = "Put on your Headphones";
-              
+              // headingText.innerHTML = "This Experience is designed for Headphone use";
+              headingText.innerHTML = "Put on your Headphones";             
             },5000)
+
             var timeout11 = setTimeout(function(){fadeOut(headingText);},8000)
 
             var timeout12 = setTimeout(function(){
@@ -196,14 +271,12 @@ const loadingTextElement = document.getElementById('loading-text');
               // headingText.innerHTML = "Describe your Emotional State or Topic for a Meditation";
               // headingText.innerHTML = "Let's start meditating, shall we?";
               headingText.innerHTML = "Type the Topic for your Meditation Routine";
-
-
             },10000)
+
             var timeout13 = setTimeout(function(){fadeOut(headingText);},12000)
 
             var timeout14 = setTimeout(function(){
               fadeIn(headingText);
-              // headingText.innerHTML = "Tell me what feelings you're experiencing";
               headingText.innerHTML = "What's on your Mind?";              
             },14000)
 
@@ -212,24 +285,14 @@ const loadingTextElement = document.getElementById('loading-text');
            },15000)
 
 
-
-            // fadeIn(inputBox);
-
-
-            setTimeout(() =>{            
+            //fades in the input field after 10seconds
+            setTimeout(() =>{  
             fadeIn(inputBox);
-
             },10000)
 
-            // setTimeout(() =>{            
-            //   fadeIn(downloadButton);
-            //   fadeIn(audioButton);
-            //   fadeIn(colorPicker);              
-            //   },14000)
-  
+          
 
-
-//fade in action Bar on key press or click
+          //fade in action Bar on key press or click
 
             inputBox.addEventListener('keypress', inputBoxKey);
 
@@ -513,8 +576,7 @@ const loadingTextElement = document.getElementById('loading-text');
 
 
 
-
-
+// ---------------------------------------------------------------------------------------------------------------------------------
 
 
             // MEDITATION LIBRARY ---------------------AUDIO PLAYBACK FUNCTIONS
@@ -531,12 +593,12 @@ const loadingTextElement = document.getElementById('loading-text');
               a.onended =()=>{document.getElementsByClassName('cardPlayBtn')[num].innerHTML ="<i class='fa-solid fa-play fa-xs' style='color: #ffffff;'></i>";}
 
             
-              //if sound is playing and the button is pressed change icon and stop the audio
+              //if sound is playing and the button is pressed change icon and stop the backround audio
               if (a.paused) {
                 a.play();
                 document.getElementsByClassName('cardPlayBtn')[num].innerHTML = "<i class='fa-solid fa-stop fa-xs' style='color: #fff;'></i>";
 
-                //if it's pressed again start playing the sound and change button icon
+                //if it's pressed again start playing the background sound and change button icon
               } else {
                 a.pause();
                 a.currentTime = 0;
