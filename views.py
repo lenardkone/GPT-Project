@@ -5,10 +5,10 @@ userPrompt = "Null"
 from flask import Blueprint, render_template, request, jsonify
 import openai
 from google.cloud import texttospeech
+from google.cloud import storage
 
 openai.api_key = "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"
 client = texttospeech.TextToSpeechClient.from_service_account_file('static/tts-key.json')
-
 
 
 

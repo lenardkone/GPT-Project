@@ -9,7 +9,6 @@ const loadingTextElement = document.getElementById('loading-text');
             var downloadButton = document.getElementsByClassName('downloadBtn')[0];
             var audioButton = document.getElementsByClassName('soundControl')[0];
             var colorPicker = document.getElementById('cPicker');
-            var submitButton = document.getElementById('submitBtn');
             var generateButton = document.getElementById('generateBtn');
             var inputBox = document.getElementsByClassName('inputBox')[0]
             var promptField = document.getElementById("promptField");
@@ -36,7 +35,7 @@ const loadingTextElement = document.getElementById('loading-text');
 
 
 
-            //
+            // drag pill click opens meditation library
              document.getElementsByClassName('dragPill')[0].addEventListener('click', ()=>{
 
               
@@ -68,8 +67,7 @@ const loadingTextElement = document.getElementById('loading-text');
             })
 
         
-
-
+        // color picker input changes app theme
             colorPicker.addEventListener('input', () => {
 
               var cPick = colorPicker.value;
@@ -187,7 +185,7 @@ const loadingTextElement = document.getElementById('loading-text');
             var timeout14 = setTimeout(function(){
               fadeIn(headingText);
               // headingText.innerHTML = "Tell me what feelings you're experiencing";
-              headingText.innerHTML = "How are you feeling today?";
+              headingText.innerHTML = "What's on your Mind?";
 
             },14000)
 
@@ -200,9 +198,18 @@ const loadingTextElement = document.getElementById('loading-text');
 
             setTimeout(() =>{            
             fadeIn(inputBox);
+            
             },10000)
 
+            // setTimeout(() =>{            
+            //   fadeIn(downloadButton);
+            //   fadeIn(audioButton);
+            //   fadeIn(colorPicker);              
+            //   },14000)
+  
 
+
+//fade in action Bar on key press or click
 
             inputBox.addEventListener('keypress', inputBoxKey);
 

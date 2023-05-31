@@ -16,6 +16,8 @@
   </head>
   <body>
 
+    <img src="" alt="">
+
     <section class="main">
       
       <div id="loading-text">Loading...</div>
@@ -51,10 +53,11 @@
 
             <input
               id="promptField"
-              placeholder="e.g. I am feeling stressed out because of my co-worker"
+              placeholder="e.g. generate a meditation based on 2001: a space odyssey"
               type="text"
               name="text_input"
               autofocus
+              onblur="this.focus()"
             />
 
             <button id="generateBtn" type="submit" value="Submit"><i class="arrowIcon fa-solid fa-arrow-right fa-sm"></i></button>
@@ -95,6 +98,11 @@
 
           
 
+      </div>
+
+
+      <div class="libraryHelper">
+      <p class="libraryHelperTag">Scroll for Meditation Library</p>  
       </div>
 
 
@@ -181,5 +189,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.js"></script>
 
     <script src="https://kit.fontawesome.com/41ee17b1a0.js" crossorigin="anonymous"></script>
-  </body>
+</body>
 </html>

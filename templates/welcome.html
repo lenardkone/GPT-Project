@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='welcome.css') }}"/>
+
+  <link rel="icon" type="image/svg" href="static/assets/favicon-v2.svg">
     
 </head>
 <body>
@@ -13,11 +18,14 @@
 <section>
 
 
-<div>
 
-     <h1>The Journey</h1> 
+<div class="titleContainer">
+  <img class="logo" src="/static/assets/logo.svg" style="height: 96px;" alt="">
+
+     <h1 class="heading">Press Button below to Start</h1> 
+     <p class="paragraph">This is an Introductory Web Experience exploring Digital Meditation Practices by utilising GPT-3 & Neural Speech Synthesis.</br> <br>Once you enter you will be prompted with a text box in which you can describe your current state of mind, an area in your life that demands attention, a specific situation or topic you would like to meditate about.<br> <br>After a short wait you will receive a guided meditation back aimed at beginners based on your desired request.<br>You can further personalise the experience with our built-in theme selector.</p>
      <form action="/meditation"> 
-        <button >Enter Realm</button>
+        <button id="enterBtn">Enter The Realm</button>
     </form> 
 </div>
 
