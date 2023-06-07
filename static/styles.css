@@ -73,7 +73,7 @@ body {
 }
 
 .heading {
-  color: #eee;
+  color: #ade5ff;
   font-size: 28px;
   font-weight: 400;
   text-align: center;
@@ -446,7 +446,7 @@ left: auto;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.3);
   transition: 1000ms ease-in;
-  font-weight: 200;
+  font-weight: 400;
   font-family: 'Poppins';}
 
 /* MEDITATION LIBRARY ------------------------------------------*/
@@ -529,6 +529,8 @@ left: auto;
 
 .meditationCard:hover{
   background-color: rgb(13, 0, 255);
+  
+
   scale: 1.04;
   transition: 400ms;
   

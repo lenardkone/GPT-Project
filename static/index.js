@@ -1,90 +1,4 @@
-/* 
 
-
-Here is the list of all Libraries, Frameworks and APIs used in this project:
-
-
-Python Software Foundation. (2022). Python(Version 3.9.16) [Programming Language]. https://www.python.org/downloads/
-
-The Pallets Projects. (2023). Flask(Version 2.2.2) [Source Code - Python Framework]. https://pypi.org/project/Flask/2.2.2/
-
-OpenAI. (2022). OpenAI. API(Version 0.27.4) [Source Code - API]. https://platform.openai.com/docs/api-reference
-
-Google. (2023). Cloud Text-to-Speech API(Version 2.14.1) [Source Code - API]. https://cloud.google.com/text-to-speech/docs/libraries
-
-The jQuery Team. (2023) JQuery.(Version: 3.6.4)[Source Code - Javascript Library].https://jquery.com/download/
-
-Processing Foundation. (2021) p5.js.(Version: 1.4.0)[Source Code - Javascript Library].https://p5js.org/download/
-
-
-
-These written guides and video tutorials have contributed to the development of this program:
-
-
-Title: Introduction - Perlin Noise and p5.js Tutorial
-Author: Daniel Schiffman
-Date: 23/06/2016
-Availability: https://youtu.be/Qf4dIN99e2w
-
-Title: The Beauty of Code: Flow Fields
-Author: Chris Courses
-Date: 09/08/2021
-Availability: https://youtu.be/na7LuZsW2UM
-
-Title: API Series #3 - How to Deploy Flask APIs to the Cloud (GCP)
-Author: James Briggs
-Date: 02/11/2021
-Availability: https://youtu.be/3fsIcMgUOY8
-
-Title: Google Cloud Text-to-Speech AI API in Python - Creating a Python Program (Part 2)
-Author: Jie Jenn
-Date: 17/12/2020
-Availability: https://youtu.be/ZXnPMzmrmIY
-
-Title: P5.js Tutorial | Create a generative art using image data
-Author: weidi
-Date: 23/02/2021
-Availability: https://youtu.be/me04ZrTJqWA
-
-Title: How to Pass JavaScript Variable to Python Function
-Author: Sky Alpha Tech
-Date: 05/04/2021
-Availability: https://youtu.be/6rPxwj1sR5c
-
-Title: Sending POST requests using AJAX (via JavaScript)to a Python Backend (via Flask)
-Author: ZeroLife
-Date: 12/04/2021
-Availability: https://youtu.be/-XchxUQTcfQ
-
-Title: Python for AI #1: Dev Environment Setup
-Author: Assembly AI
-Date: 08/03/2023
-Availability: https://youtu.be/yTJxDzqo4fQ
-
-Title: 17.4: Amplitude Analysis - p5.js Sound Tutorial
-Author: Daniel Shiffman
-Date: 09/06/2016
-Availability: https://youtu.be/NCCHQwNAN6Y
-
-Title: How to create a new branch on GitHub // Commit & Push
-Author: Kahan Data Solutions
-Date: 31/03/2021
-Availability:https://youtu.be/Lf3DYRvCPFo
-
-Title: Make A Python Website As Fast As Possible
-Author: Tech with Tim
-Date: 13/09/2021
-Availability: https://youtu.be/kng-mJJby8g
-
-Title: Python Flask Tutorial: Full-Featured Web App Part 1 - Getting Started
-Author: Corey Schafer
-Date: 04/05/2018
-Availability: https://youtu.be/MwZwr5Tvyxo
-
-
-
-
-*/
 
             const loadingTextElement = document.getElementById('loading-text');
             loadingTextElement.textContent = '';
@@ -122,9 +36,7 @@ Availability: https://youtu.be/MwZwr5Tvyxo
             colorPicker.style.opacity = '0'
             fadeIn(headingText);
             libraryHelperTag.style.opacity = '0';
-
-
-
+           
 
 
 
@@ -172,7 +84,6 @@ Availability: https://youtu.be/MwZwr5Tvyxo
             })
 
         
-
         // color picker input changes the application theme
             colorPicker.addEventListener('input', () => {
 
@@ -219,7 +130,7 @@ Availability: https://youtu.be/MwZwr5Tvyxo
                      
 
                           medCard.addEventListener('mouseover', function(){
-                            
+
                             medCard.style.backgroundColor = cPick;
                             cardText.style.filter = 'brightness(30%)';
                             cardText.style.color = cPick;
