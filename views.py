@@ -1,8 +1,3 @@
-# This Python file calls the OpenAI API and Google Cloud Text to Speech API and 
-# exchanges data with the front-end Javascript.
- 
-
-
 OutputGPT = "OutputGPT has no value."
 userPrompt = "Null"
 
@@ -14,6 +9,7 @@ from google.cloud import storage
 
 openai.api_key = "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"
 client = texttospeech.TextToSpeechClient.from_service_account_file('static/tts-key.json')
+storage_client = storage.Client()
 
 
 
@@ -33,20 +29,6 @@ def main():
 def submit():
     userPrompt = request.form['text_input']
     
-# These guides have helped me integrate the openai API within my python application:
-
-# Title: API Reference
-# Author: OpenAI
-# Code Version: 0.27.4
-# Accessed: 30/05/2023
-# Availability: https://platform.openai.com/docs/api-reference
-
-# Title: Guides - Chat Completions
-# Author: OpenAI
-# Code Version: 0.27.4
-# Accessed: 30/05/2023
-# Availability: https://platform.openai.com/docs/guides/chat
-
 
     completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
@@ -59,21 +41,18 @@ def submit():
 )
 
 
-#Im storing the generated response in a string variable OutputGPT & send it back in JSON format along with the initial user input
     OutputGPT= completion.choices[0].message.content
     
     print(OutputGPT) 
     return jsonify(OutputGPT=OutputGPT, userPrompt=userPrompt)
     
 
-# The text-to-speech API fetches the output and stores it in a new variable result
 @views.route('/tts', methods=['POST'])
 
 def tts():
     data = request.get_json()
     result = data["resultJS"]
     
-# Here I configure the synthesis models parameters
     synthesis_input = texttospeech.SynthesisInput(ssml=result)
 
     voice = texttospeech.VoiceSelectionParams(
@@ -86,7 +65,6 @@ def tts():
             sample_rate_hertz=48000
 )
 
-# This writes the speech output as a wav file to the local filesystem
   
     response = client.synthesize_speech(
             input=synthesis_input, voice=voice, audio_config=audio_config)
