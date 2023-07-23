@@ -3,7 +3,7 @@
 //NOISE -- variables
 let particles = [];
 const num = 6000;
-let particleColor ='rgb(129, 221, 255)';
+let particleColor ='rgb(0, 0, 0)';
 
 //higher value forms more dense waves
 const noiseScale = 0.004;
@@ -40,7 +40,7 @@ function setup() {
 
 
 function draw() {
-  background(3, 3, 14, 20);
+  background(255, 255, 255, 20);
 
 //SOUND -- get the volume level of the audio and map it to a variable  
 

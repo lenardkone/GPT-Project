@@ -16,27 +16,16 @@
             var inputBox = document.getElementsByClassName('inputBox')[0]
             var promptField = document.getElementById("promptField");
             var previousQuestion = document.getElementById('question');
-            var medCards = document.querySelectorAll('.meditationCard');
-            var cardTexts = document.querySelectorAll('.cardText');
-            var cardPlayButtons = document.querySelectorAll('.cardPlayBtn');
-            var cardPlayButtonIcons = document.querySelectorAll('.cardPlayBtnIcon');
-            var dragPill = document.getElementsByClassName('dragPill')[0];
-            var library = document.getElementsByClassName('library')[0];
-            var libraryHelperTag = document.getElementsByClassName('libraryHelperTag')[0];
-
-            //Declare sound file variables
-            var currentSpeech;
-            var anger, affirmations, grief, sleep, overthink, frustration;
-
+           
+           
 
             //INITIALIZE VALUES FOR FADE IN
             downloadButton.style.opacity = '0';
             audioButton.style.opacity = '0';
-            inputBox.style.opacity = '0'
-            colorPicker.style.opacity = '0'
+            colorPicker.style.opacity = '0';
+            inputBox.style.opacity = '0';
+
             fadeIn(headingText);
-            libraryHelperTag.style.opacity = '0';
-           
 
 
 
@@ -44,77 +33,24 @@
 
            
            
-        
-        // color picker input changes the application theme
-            colorPicker.addEventListener('input', () => {
-
-              var cPick = colorPicker.value;
-
-              headingText.style.color = cPick;
-              headingText.style.filter = 'brightness(140%)';
-              particleColor = cPick;
-
-
-
-                  inputBox.addEventListener('mouseover', function(){
-                    generateButton.style.backgroundColor = cPick;
-                    generateButton.style.transition = '200ms';                    
-                    generateButton.style.color = cPick;
-                    document.querySelector('.arrowIcon').style.filter = 'brightness(40%)';
-
-                  });
-
-                  inputBox.addEventListener('mouseout', function(){
-                    generateButton.style.backgroundColor = 'transparent';
-                    generateButton.style.color = cPick;
-                    document.querySelector('.arrowIcon').style.filter = 'none';
-
-                  });
-
-
-                  generateButton.addEventListener('mouseover',()=>{
-                    generateButton.style.borderColor = cPick;
-                  })
-
-                  generateButton.addEventListener('mouseout',()=>{
-                    generateButton.style.borderColor =  'rgba(255, 255, 255, 0.4)';
-
-                  })
-      
-                  
-            })
-
-            
-
-
-
-
-
-
-
-
-
-
-
             //ON PAGE LOAD ANIMATIONS
             // I am using timeout functions to delay the animation of the heading text
 
 
-            var timeout9 = setTimeout(function(){fadeOut(headingText);},2000)
+            var timeout9 = setTimeout(function(){fadeOut(headingText);},5000)
 
             var timeout10 = setTimeout(function(){
               fadeIn(headingText);
               headingText.innerHTML = "What's on your Mind?";             
-            },4000)
+            },6000)
 
-            // var timeout11 = setTimeout(function(){fadeOut(headingText);},8000)
 
             
 
             //fades in the input field after 10seconds
             setTimeout(() =>{  
             fadeIn(inputBox);
-            },4000)
+            },1000)
 
           
 
@@ -150,7 +86,7 @@
            //call this function everytime content updates for OPACITY FADE IN ANIMATION
 
             function fadeIn(el){
-              if(el.innerHTML === 'Welcome to The Meditation Realm'){
+              if(el.innerHTML === 'How can I assist you today?'){
                 el.classList.add('transitionDelay');
 
               }
@@ -216,11 +152,10 @@
                   var currentSpeech = null;
                   $('form').on('submit', function(event) {
                     event.preventDefault();
-                    
+
+                    clearTimeout(timeout9);
                     clearTimeout(timeout10);
-                    clearTimeout(timeout11);
-                    clearTimeout(timeout12);
-                    
+                  
                     //Hide Breath Animation & Replay Button for Resubmit
                     hideBreath();
                     replayButton.style.opacity = 0;
@@ -248,7 +183,7 @@
                           
                           headingText.innerHTML = "Hang tight, almost there";
                           fadeIn(headingText);
-                        },8000)
+                        },7000)
                         
                   
                         
@@ -369,4 +304,45 @@
                   });
                 });
 
+
+
+
+        // color picker input changes the application theme
+            colorPicker.addEventListener('input', () => {
+
+              var cPick = colorPicker.value;
+
+              headingText.style.color = cPick;
+              headingText.style.filter = 'brightness(140%)';
+              particleColor = cPick;
+
+
+
+                  inputBox.addEventListener('mouseover', function(){
+                    generateButton.style.backgroundColor = cPick;
+                    generateButton.style.transition = '200ms';                    
+                    generateButton.style.color = cPick;
+                    document.querySelector('.arrowIcon').style.filter = 'brightness(40%)';
+
+                  });
+
+                  inputBox.addEventListener('mouseout', function(){
+                    generateButton.style.backgroundColor = 'transparent';
+                    generateButton.style.color = cPick;
+                    document.querySelector('.arrowIcon').style.filter = 'none';
+
+                  });
+
+
+                  generateButton.addEventListener('mouseover',()=>{
+                    generateButton.style.borderColor = cPick;
+                  })
+
+                  generateButton.addEventListener('mouseout',()=>{
+                    generateButton.style.borderColor =  'rgba(255, 255, 255, 0.4)';
+
+                  })
+      
+                  
+            })
 
