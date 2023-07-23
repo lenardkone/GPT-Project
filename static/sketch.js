@@ -2,9 +2,8 @@
 
 //NOISE -- variables
 let particles = [];
-const num = 10000;
-let particleColor ='rgb(129, 221, 255)'
-;
+const num = 6000;
+let particleColor ='rgb(129, 221, 255)';
 
 //higher value forms more dense waves
 const noiseScale = 0.004;
