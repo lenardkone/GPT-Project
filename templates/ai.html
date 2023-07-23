@@ -1,0 +1,106 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>lenny.ai</title>
+    
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"/>
+    <link rel="icon" type="image/svg" href="static/assets/favicon.svg">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+   
+  </head>
+  <body>
+
+
+    <section class="main">
+      
+      <div id="loading-text">Loading...</div>
+      <div id="canvas-wrapper"></div>
+
+
+      <div class="container">
+        <div id="question">
+
+                  <h4 class="textStyle"></h4>
+
+        </div>
+        <div class="textContainer">
+                <div id="loader"></div>
+
+                
+
+                <h1 class="heading">How can I assist you today?</h1>
+          
+        </div>
+
+        <form autocomplete="off">
+          <div class="formLayout">
+            <div class="inputBox">
+
+            <input
+              id="promptField"
+              placeholder="Ask me anything"
+              type="text"
+              name="text_input"
+              autofocus
+              onblur="this.focus()"
+            />
+
+            <button id="generateBtn" type="submit" value="Submit"><i class="arrowIcon fa-solid fa-arrow-right fa-sm"></i></button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+
+        <div class="actionBar">
+
+          <div class="leftBtnGroup">
+            <button class="optionBtn downloadBtn" id="saveCanvasBtn">        
+              <i class="fa-solid fa-cloud-arrow-down fa-xs" style="color: #fff;"></i>    
+            </button>
+            
+              <input type="color" id="cPicker" name="cPicker" value="#9ef9ff">
+
+
+            <button class="optionBtn replayBtn">        
+              <i class="fa-solid fa-repeat fa-xs" style="color: #ffffff;"></i>
+            </button>
+
+          </div>  
+
+          <div class="soundControl">
+            <h6 class="audioStatusTag">SOUND:</h6>
+            <button class="optionBtn audioBtn">        
+              <i class="fa-solid fa-volume-xmark fa-xs" style="color: #fff;"></i>        
+            </button>
+          
+          </div>
+
+          
+
+      </div>
+
+    </section>
+
+
+
+  <script src="static/index.js"></script>
+  
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='sketch.js')}}"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.js"></script>
+
+    <script src="https://kit.fontawesome.com/41ee17b1a0.js" crossorigin="anonymous"></script>
+</body>
+</html>
