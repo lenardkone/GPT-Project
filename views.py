@@ -22,9 +22,9 @@ def home():
     return render_template("welcome.html")
 
 
-@views.route("/meditation")
+@views.route("/ai")
 def main():
-    return render_template("meditation.html")
+    return render_template("ai.html")
 
 # Requests text input once user presses submit button
 
@@ -34,13 +34,13 @@ def submit():
     userPrompt = request.form['text_input']
 
     completion = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo-16k",
         max_tokens=4000,
         n=1,
-        temperature=0.8,
+        temperature=0.6,
         messages=[
-            {"role": "system", "content": "Pretend to be a therapist for the Application called 'MindRealm' & always generate your answers as an ssml script. Set the volume to 'soft' and rate to '80%'."},
-            {"role": "assistant", "content": "I will give you advice based on how you're feeling and troubling questions."},
+
+            {"role": "system", "content": "Act as a helpful digital assistant with a slight focus on wellbeing. Generate each answer as an ssml script. Set the volume to 'soft' and rate to '86%'."},
             {"role": "user", "content": userPrompt},
         ]
     )

@@ -7,7 +7,6 @@
 
             var headingText = document.getElementsByClassName('heading')[0];
             var loader = document.getElementById('loader');
-            var breathDiv = document.getElementsByClassName('breathDiv')[0];
             var replayButton = document.getElementsByClassName('replayBtn')[0];
             var downloadButton = document.getElementsByClassName('downloadBtn')[0];
             var audioButton = document.getElementsByClassName('soundControl')[0];
@@ -28,7 +27,7 @@
             fadeIn(headingText);
 
 
-
+            document.getElementsByClassName('actionBar')[0].style.display = 'none';
 
 
            
@@ -37,7 +36,7 @@
             // I am using timeout functions to delay the animation of the heading text
 
 
-            var timeout9 = setTimeout(function(){fadeOut(headingText);},5000)
+            var timeout9 = setTimeout(function(){fadeOut(headingText);},4000)
 
             var timeout10 = setTimeout(function(){
               fadeIn(headingText);
@@ -129,16 +128,7 @@
 
 
 
-          //Breathing Animation visibility control functions
-
-          function showBreath(){
-              breathDiv.style.display = 'block';
-            }
-            function hideBreath(){
-              breathDiv.style.display = 'none';
-
-            }
-              
+       
 
 
 
@@ -156,8 +146,7 @@
                     clearTimeout(timeout9);
                     clearTimeout(timeout10);
                   
-                    //Hide Breath Animation & Replay Button for Resubmit
-                    hideBreath();
+                   
                     replayButton.style.opacity = 0;
                     replayButton.style.display = 'none'
                     
@@ -263,8 +252,7 @@
                                             speech.onended = function(blob){
                                             fadeOut(headingText);
                                             
-                                            showBreath();
-                                            // fadeIn(breathDiv);
+                                          
                                             replayButton.style.display = 'inline-block'
                                             fadeOut(replayButton)
                                             setTimeout(function(){fadeIn(replayButton);},1000)

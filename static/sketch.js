@@ -2,20 +2,17 @@
 
 //NOISE -- variables
 let particles = [];
-const num = 6000;
+const num = 10000;
 let particleColor ='rgb(0, 0, 0)';
 
 //higher value forms more dense waves
-const noiseScale = 0.004;
+const noiseScale = 0.0017;
 
 //SOUND -- variables
 let speechOutput;
 let button;
-let amplitude;
-let soundFactor;
-let micFactor;
-let volume;
-let micInput;
+
+
 
 
 
@@ -32,21 +29,15 @@ function setup() {
     particles.push(createVector(random(width), random(height)));
   }
 
-  //SOUND -- create amplitude object
-  amplitude = new p5.Amplitude();
- 
+  
 
 }
 
 
 function draw() {
-  background(255, 255, 255, 20);
+  background(255, 255, 255, 120);
 
-//SOUND -- get the volume level of the audio and map it to a variable  
 
-  let soundLevel = amplitude.getLevel();
-  soundFactor = map(soundLevel, 0, 0.4, 1, 5);
- 
 
 
 //NOISE -- add particles and flow field
@@ -68,11 +59,7 @@ function draw() {
     }
   }
 
-  //if the audio Sound is higher than 3 the flow field changes directions
-  if(soundFactor >= 3 && soundFactor <= 3.01){
-    noiseSeed(random(1000));
-    }
-    
+  
   }
 
 
