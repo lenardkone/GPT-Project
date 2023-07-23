@@ -27,15 +27,7 @@ function setup() {
   var canvas = createCanvas(windowWidth, windowHeight,);
   canvas.parent("canvas-wrapper");
 
-/*
-This video tutorial has helped me a lot to create a particle array in p5
-I have modified the code so that the noise reacts to sound and adapts to the viewport size.
 
-Title: Easy Perlin Noise Flow Fields
-Author: Barney Codes
-Date: 17/09/2021
-Availability: https://youtu.be/sZBfLgfsvSk
-*/
   for (let i = 0; i < num; i++) {
     particles.push(createVector(random(width), random(height)));
   }

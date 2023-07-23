@@ -41,48 +41,9 @@
 
 
 
-            // drag pill click opens meditation library
 
-            var y = library.getBoundingClientRect().top + window.scrollY;
-
-             document.getElementsByClassName('dragPill')[0].addEventListener('click', ()=>{
-
-                    window.scroll({
-                    top: y - 72,
-                    behavior: 'smooth'
-                  });
-
-                  if(window.scrollY > 0){
-                    window.scroll({
-                      top: 0,
-                      behavior: 'smooth'
-                    });              
-                  }
-              })
-
-
-            //hide library indicator text on page scroll
-            document.addEventListener('scroll', ()=>{
-
-              if(window.scrollY > 0){
-             
-                document.getElementsByClassName('libraryHelperTag')[0].style.opacity = '0';
-                document.getElementsByClassName('libraryHelperTag')[0].style.transition = '300ms ease-out';          
-              }
-            })
            
-
-            dragPill.addEventListener('mouseover', ()=>{   
-              dragPill.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
-                  dragPill.style.transition = '200ms ease-in;'
-                  
-            })
-            dragPill.addEventListener('mouseout', ()=>{
-
-              dragPill.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-              dragPill.style.transition = '200ms ease-out'
-            })
-
+           
         
         // color picker input changes the application theme
             colorPicker.addEventListener('input', () => {
@@ -120,35 +81,7 @@
 
                   })
       
-                   
-
-
-                  for(var n = 0; n < medCards.length ; n++){
-                      let medCard = medCards[n];
-                      let cardText = cardTexts[n];
-                      let cardPlayButton = cardPlayButtons[n];
-                     
-
-                          medCard.addEventListener('mouseover', function(){
-
-                            medCard.style.backgroundColor = cPick;
-                            cardText.style.filter = 'brightness(30%)';
-                            cardText.style.color = cPick;
-                            cardPlayButton.style.filter = 'brightness(20%)';
-                            cardPlayButton.style.borderColor = cPick;
-                           
-                          });
-                          
-                          
-                          medCard.addEventListener('mouseout', function(){
-                            medCard.style.backgroundColor = '#ccd1f203';
-                            cardText.style.filter = 'none';
-                            cardText.style.color = 'white';
-                            cardPlayButton.style.filter = 'none';
-                            cardPlayButton.style.borderColor = "rgba(255, 255, 255, 0.2)";                               
-                            });
-
-                  }
+                  
             })
 
             
@@ -167,39 +100,21 @@
             // I am using timeout functions to delay the animation of the heading text
 
 
-            var timeout9 = setTimeout(function(){fadeOut(headingText);},3000)
+            var timeout9 = setTimeout(function(){fadeOut(headingText);},2000)
 
             var timeout10 = setTimeout(function(){
               fadeIn(headingText);
-              // headingText.innerHTML = "This Experience is designed for Headphone use";
-              headingText.innerHTML = "Put on your Headphones";             
-            },5000)
+              headingText.innerHTML = "What's on your Mind?";             
+            },4000)
 
-            var timeout11 = setTimeout(function(){fadeOut(headingText);},8000)
+            // var timeout11 = setTimeout(function(){fadeOut(headingText);},8000)
 
-            var timeout12 = setTimeout(function(){
-              fadeIn(headingText);
-              // headingText.innerHTML = "Describe your Emotional State or Topic for a Meditation";
-              // headingText.innerHTML = "Let's start meditating, shall we?";
-              headingText.innerHTML = "Type the Topic for your Meditation Routine";
-            },10000)
-
-            var timeout13 = setTimeout(function(){fadeOut(headingText);},12000)
-
-            var timeout14 = setTimeout(function(){
-              fadeIn(headingText);
-              headingText.innerHTML = "What's on your Mind?";              
-            },14000)
-
-            setTimeout(()=>{
-              libraryHelperTag.style.opacity = '1';
-           },15000)
-
+            
 
             //fades in the input field after 10seconds
             setTimeout(() =>{  
             fadeIn(inputBox);
-            },10000)
+            },4000)
 
           
 
@@ -301,13 +216,11 @@
                   var currentSpeech = null;
                   $('form').on('submit', function(event) {
                     event.preventDefault();
-
+                    
                     clearTimeout(timeout10);
                     clearTimeout(timeout11);
                     clearTimeout(timeout12);
-                    clearTimeout(timeout13);
-                    clearTimeout(timeout14);
-
+                    
                     //Hide Breath Animation & Replay Button for Resubmit
                     hideBreath();
                     replayButton.style.opacity = 0;
@@ -324,39 +237,18 @@
                         loader.style.display = 'block';
                         fadeIn(loader);
 
-                        headingText.innerHTML = "Get in a comfortable position";
+                        headingText.innerHTML = "Generating Answer...";
                         fadeIn(headingText);
 
-                        var timeout1 = setTimeout(function(){fadeOut(headingText);},9000)
+                        var timeout1 = setTimeout(function(){fadeOut(headingText);},5000)
 
+                        
+                
                         var timeout2 = setTimeout(function(){
-                          fadeIn(headingText);
-                          headingText.innerHTML = "Generating Meditation...";
                           
-                        },10000)
-
-                        var timeout3 = setTimeout(function(){fadeOut(headingText);},15000)
-
-                        var timeout4 = setTimeout(function(){
+                          headingText.innerHTML = "Hang tight, almost there";
                           fadeIn(headingText);
-                          headingText.innerHTML = "About 30 seconds remaining";
-                          
-                        },16000)
-
-                        var timeout5 = setTimeout(function(){fadeOut(headingText);},24000)
-
-                        var timeout6 = setTimeout(function(){
-                          headingText.innerHTML = "Patience is a great virtue";
-                          fadeIn(headingText);
-                        },25000)
-
-                        var timeout7 = setTimeout(function(){fadeOut(headingText);},34000)
-
-                        var timeout8 = setTimeout(function(){
-                          
-                          headingText.innerHTML = "Hang tight, we're almost there";
-                          fadeIn(headingText);
-                        },35000)
+                        },8000)
                         
                   
                         
@@ -400,16 +292,11 @@
 
                                     clearTimeout(timeout1);
                                     clearTimeout(timeout2);
-                                    clearTimeout(timeout3);
-                                    clearTimeout(timeout4);
-                                    clearTimeout(timeout5);
-                                    clearTimeout(timeout6);
-                                    clearTimeout(timeout7);
-                                    clearTimeout(timeout8);
+                                 
 
                                     setTimeout(function(){
                                     fadeIn(headingText);
-                                    headingText.innerHTML = "Meditation Playing...";
+                                    headingText.innerHTML = "Playing Answer...";
                                     
 
                                     //AJAX request for Blob from speech.wav 
@@ -483,42 +370,3 @@
                 });
 
 
-
-
-
-
-// ---------------------------------------------------------------------------------------------------------------------------------
-
-
-            // MEDITATION LIBRARY ---------------------AUDIO PLAYBACK FUNCTIONS
-              
-              anger =        new Audio("static/assets/anger.wav");
-              sleep =        new Audio("static/assets/sleep.wav");
-              overthink =    new Audio( "static/assets/overthink.wav");
-              grief =        new Audio("static/assets/grief.wav");
-              frustration =   new Audio("static/assets/frustration.wav");
-              affirmations = new Audio("static/assets/affirmations.wav");
-
-
-            function togglePlay(a, num) {
-              a.onended =()=>{document.getElementsByClassName('cardPlayBtn')[num].innerHTML ="<i class='fa-solid fa-play fa-xs' style='color: #ffffff;'></i>";}
-
-            
-              //if sound is playing and the button is pressed change icon and stop the backround audio
-              if (a.paused) {
-                a.play();
-                document.getElementsByClassName('cardPlayBtn')[num].innerHTML = "<i class='fa-solid fa-stop fa-xs' style='color: #fff;'></i>";
-
-                //if it's pressed again start playing the background sound and change button icon
-              } else {
-                a.pause();
-                a.currentTime = 0;
-
-                document.getElementsByClassName("cardPlayBtn")[num].innerHTML = "<i class='fa-solid fa-play fa-xs' style='color: #ffffff;'></i>";
-              }
-            
-            }
-
-
-
-                          
