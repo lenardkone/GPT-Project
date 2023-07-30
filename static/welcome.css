@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500&family=Victor+Mono:ital,wght@0,200;0,300;0,400;0,700;1,600&display=swap');
 
 
 body{
@@ -7,11 +7,11 @@ body{
         scrollbar-width: none; 
         margin: 0;
         padding: 0;
-        background-color: rgb(242, 242, 255);
+        background-color: rgb(0, 0, 0);
       
         padding: 0;
-        font-family: "Poppins";
-        color: rgb(22, 24, 43);
+        font-family: "Victor Mono";
+        color: rgb(255, 255, 255);
         z-index: -2;
         line-height: 125%;
         user-select: none;
@@ -46,12 +46,13 @@ body{
 
 #enterBtn {
   margin: 0;
-  background-color: rgb(242, 242, 255);
+  background-color: rgb(0, 0, 0);
   border: 1px solid;
-  border-color: rgb(13, 0, 255);
-  color: rgb(13, 0, 255);
+  border-color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
     padding: 20px 20px;
     font-weight: 500;
+    font-family: 'Victor Mono';
     border-radius: 4px;
     font-size: 12px;
     width: 140px;
@@ -60,10 +61,10 @@ body{
   
   #enterBtn:hover {
     margin: 0;
-    color: rgb(158, 199, 235);
-    background-color: rgb(13, 0, 255);
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     border: 1px solid;
-    border-color: rgb(13, 0, 255);
+    border-color: rgb(255, 255, 255);
     transition: 300ms ease-in;
   }
 

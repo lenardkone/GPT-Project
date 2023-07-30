@@ -12,20 +12,20 @@
             var audioButton = document.getElementsByClassName('soundControl')[0];
             var colorPicker = document.getElementById('cPicker');
             var generateButton = document.getElementById('generateBtn');
-            var inputBox = document.getElementsByClassName('inputBox')[0]
+            var inputBox = document.getElementsByClassName('inputBox')[0];
             var promptField = document.getElementById("promptField");
             var previousQuestion = document.getElementById('question');
            
-           
+          
 
-            //INITIALIZE VALUES FOR FADE IN
+            //INITIALIZE VALUES FOR FADE INf
             downloadButton.style.opacity = '0';
             audioButton.style.opacity = '0';
             colorPicker.style.opacity = '0';
             inputBox.style.opacity = '0';
 
             fadeIn(headingText);
-
+            
 
             document.getElementsByClassName('actionBar')[0].style.display = 'none';
 
@@ -41,11 +41,11 @@
             var timeout10 = setTimeout(function(){
               fadeIn(headingText);
               headingText.innerHTML = "What's on your Mind?";             
-            },6000)
+            },5200)
+
 
 
             
-
             //fades in the input field after 10seconds
             setTimeout(() =>{  
             fadeIn(inputBox);
@@ -146,7 +146,8 @@
                     clearTimeout(timeout9);
                     clearTimeout(timeout10);
                   
-                   
+                    document.getElementsByClassName('textStyle')[0].innerHTML = document.getElementById('generateBtn').value;
+
                     replayButton.style.opacity = 0;
                     replayButton.style.display = 'none'
                     
@@ -193,6 +194,7 @@
 
                             console.log(response.userPrompt);
                             document.getElementsByClassName('textStyle')[0].innerHTML = response.userPrompt;
+              
                             previousQuestion.style.opacity = 1;
 
                             
@@ -220,7 +222,8 @@
 
                                     setTimeout(function(){
                                     fadeIn(headingText);
-                                    headingText.innerHTML = "Playing Answer...";
+                                    headingText.innerHTML = response.OutputGPT;
+                                    headingText.style.fontSize = '2rem'
                                     
 
                                     //AJAX request for Blob from speech.wav 
@@ -247,12 +250,16 @@
                                             speech.play();
                                             
                                             
-                                            
                                             // Execute after speech.wav audio ends
                                             speech.onended = function(blob){
-                                            fadeOut(headingText);
-                                            
-                                          
+                                              fadeOut(headingText);
+
+                                            setTimeout(function(){
+                                              fadeIn(headingText);
+                                              headingText.style.fontSize = '3rem'
+                                              headingText.innerHTML = "Anything Else?";             
+                                            },2000)
+
                                             replayButton.style.display = 'inline-block'
                                             fadeOut(replayButton)
                                             setTimeout(function(){fadeIn(replayButton);},1000)

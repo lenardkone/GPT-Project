@@ -11,15 +11,17 @@ const noiseScale = 0.0017;
 //SOUND -- variables
 let speechOutput;
 let button;
-
+let speechRec;
 
 
 
 
 
 function setup() {
-  sound = loadSound("static/assets/music.mp3");
+  sound = loadSound("static/assets/beneath-waves.wav");
   speech = loadSound("static/assets/speech.wav");
+
+
  
   var canvas = createCanvas(windowWidth, windowHeight,);
   canvas.parent("canvas-wrapper");
@@ -36,8 +38,6 @@ function setup() {
 
 function draw() {
   background(255, 255, 255, 120);
-
-
 
 
 //NOISE -- add particles and flow field

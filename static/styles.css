@@ -250,7 +250,7 @@ canvas {
 
   
 
-  animation: fadeInAnimation ease-in-out 14s;
+  animation: fadeInAnimation ease-in-out 6s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   

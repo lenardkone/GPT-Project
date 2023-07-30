@@ -31,7 +31,34 @@ def main():
 
 @views.route("/submit", methods=['POST'])
 def submit():
-    userPrompt = 
+    userPrompt = request.form['text_input']
+
+    completion = openai.ChatCompletion.create(
+        model="gpt-4",
+        max_tokens=4000,
+        n=1,
+        temperature=0.6,
+        messages=[
+
+            {"role": "system", "content": "Act as a helpful digital assistant with a slight focus on wellbeing. Generate each answer as an ssml script. Set the volume to 'soft' and rate to '80%'. Limit the script to a maximum of 50 words"},
+            {"role": "user", "content": userPrompt},
+        ]
+    )
+
+    OutputGPT = completion.choices[0].message.content
+    # OutputGPT.append({"role": "assistant", "content": userPrompt})
+
+    print(OutputGPT)
+    return jsonify(OutputGPT=OutputGPT, userPrompt=userPrompt)
+
+
+@views.route('/tts', methods=['POST'])
+def tts():
+    data = request.get_json()
+    result = data["resultJS"]
+
+    synthesis_input = texttospeech.SynthesisInput(ssml=result)
+
     voice = texttospeech.VoiceSelectionParams(
         language_code="en-GB",
         name="en-GB-News-L",
